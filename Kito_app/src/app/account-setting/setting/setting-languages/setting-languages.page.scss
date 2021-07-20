@@ -1,0 +1,23 @@
+ion-content {
+  --padding-top: calc(80px + 45px);
+  --background: #fff;
+}
+
+.item {
+	&::part(native) {
+		padding-left: 0;
+	}
+
+	.label {
+		font-size: 18px;
+		color: #828282;
+	}
+
+	.label-bold {
+		color: #424242;
+	}
+}
+
+ion-radio {
+	--color-checked: #F6C33E;
+}

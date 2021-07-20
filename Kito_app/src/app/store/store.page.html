@@ -1,0 +1,29 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+
+<ion-content>
+  <ul>
+    <li *ngFor="let item of categories" 
+      [ngClass]="{'category-active': item.id == currentCategoryId }"
+      (click)="Activecategory(item)"
+      >
+      <ion-text>{{item.name}}</ion-text>
+    </li>
+  </ul>
+ 
+  <ion-buttons class="group-product">
+    <div class="product">
+      <div *ngFor = "let product of products" class="product-item">
+        <img [src] ="product?.thumb_image.url" alt="">
+       <ion-label class="name"> {{product.name}}</ion-label>
+       <ion-label class="price"> {{product.price}}</ion-label>
+    </div>
+    </div>
+  </ion-buttons>
+  <ion-infinite-scroll #infinityScroll (ionInfinite)="loadMoreProducts($event)">
+    <ion-infinite-scroll-content loadingSpinner="lines"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

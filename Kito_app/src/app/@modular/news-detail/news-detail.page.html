@@ -1,0 +1,16 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content>
+  <ion-label class="main-title">{{ data?.title || data?.name }}</ion-label>
+  <img [src]="data?.thumb_image?.url || data?.thumb_images[0]?.url">
+  <span class="text name" *ngIf="data?.priest_name">{{ data?.priest_name }}
+  </span>
+  <p class="text nav-map" (click)="goToMap()" *ngIf="data?.address">{{ data?.address }}
+    <ion-icon name="navigate" (click)="goToMap()" *ngIf="map"></ion-icon>
+  </p>
+ 
+  <p class="text" [innerHTML] ="data?.content || data?.diocese_info?.content" *ngIf="data?.content || data?.diocese_info?.content"></p>
+  <p class="text" [innerHTML]="data?.parish_info?.content"></p>
+</ion-content>

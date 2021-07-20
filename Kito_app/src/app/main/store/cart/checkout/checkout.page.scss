@@ -1,0 +1,135 @@
+ion-header {
+  height: 80px;
+}
+
+.address-box {
+  .address-title {
+    color: #828282;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .address-content {
+    border-radius: 10px;
+    padding: 8px 8px;
+    margin-top: 5px;
+    margin-bottom: 23px;
+    height: 59px;
+    .address {
+      color: #424242;
+      font-size: 14px;
+      font-weight: 500;
+      margin: 0 0 0 8px;
+    }
+  }
+  .phone-content {
+    height: 30px;
+    .phone {
+      height: 100%;
+    }
+  }
+}
+
+.list-box {
+  margin: 40px 0;
+
+  .list-title {
+    display: block;
+    text-align: center;
+    color: #828282;
+  }
+
+  .list {
+    .item {
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 16px 0;
+
+      .item-amount {
+        color: #424242;
+        font-size: 16px;
+        font-weight: 700;
+        width: 40px;
+      }
+
+      .item-name {
+        color: #424242;
+        font-size: 16px;
+        font-weight: 700;
+        width: calc((100% - 50px) / 2);
+      }
+
+      .price-box {
+        width: calc((100% - 50px) / 2);
+        justify-content: flex-end;
+        align-items: flex-start;
+
+        .item-price {
+          color: #424242;
+          font-size: 16px;
+          font-weight: 500;
+          text-align: right;
+          word-wrap: break-word;
+          width: calc(100% - 30px);
+        }
+      }
+    }
+  }
+}
+
+.total-box {
+  .total-item {
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 5px 0;
+    color: #828282;
+    font-size: 16px;
+
+    .total-title-bold {
+      color: #424242;
+      font-weight: 700;
+    }
+
+    .total-price {
+      width: calc(100% - 150px);
+      word-wrap: break-word;
+      text-align: right;
+    }
+  }
+}
+
+.payment-method-box {
+  margin: 40px 0;
+
+  .payment-method-title {
+    color: #828282;
+    font-size: 16px;
+  }
+
+  .payment-method {
+    height: 43px;
+
+    .payment-method-icon {
+      width: 40px;
+    }
+
+    .payment-method-name {
+      margin: 10px;
+      color: #828282;
+      font-size: 14px;
+      width: calc(100% - 60px);
+    }
+  }
+}
+
+.order-btn {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  --background: #f6c33e;
+  --border-radius: 15px !important;
+  width: 150px;
+  height: 40px;
+  text-transform: none;
+  margin-bottom: 30px;
+}

@@ -1,0 +1,62 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+<ion-content [ngClass]="{'disable-scroll': !news.length}">
+  <app-search-bar-nav (output)="search($event)"></app-search-bar-nav>
+  <span class="current" *ngIf="newsParish" (click)="goToOtherParishes()"> Giáo xứ khác >>
+  </span>
+  <ion-icon name="menu-outline" *ngIf="vatican" (click)="showCate()"></ion-icon>
+  <ion-list class="setting" *ngIf= "checkShowCate()">
+     <ion-label>Danh mục</ion-label>
+    <ion-buttons *ngFor ="let c of listCate" (click)="changeCate(c)" 
+    [ngClass] ="{'active-color': idActive == c.id}">
+      {{c.name}}
+    </ion-buttons>
+  </ion-list>
+  <div *ngIf="news.length" class="main-news" (click)="goToNewsDetail(news[0])">
+    <img class="item-img" [src]="news[0].thumb_image.url">
+
+    <ion-buttons class="text-box">
+      <p class="item-title three-dots-2">{{ news[0].title }}</p>
+      <ion-buttons class="right-box text">
+        <ion-buttons>
+          <ion-icon name="eye" class="eye"></ion-icon>
+          <ion-label>{{ news[0].views }}</ion-label>
+        </ion-buttons>
+        <ion-buttons class="time-box">
+          <ion-icon name="time" class="time"></ion-icon>
+          <ion-label> {{news[0].time}} {{ news[0].yymmdd }}</ion-label>
+        </ion-buttons>
+      </ion-buttons>
+    </ion-buttons>
+  </div>
+
+  <ion-list class="sub-news" *ngIf="news.length">
+    <ng-container *ngFor="let item of news; let i = index;">
+      <ion-buttons *ngIf="i != 0" class="sub-news-item" (click)="goToNewsDetail(item)">
+        <div class="img-container">
+          <img [src]="item.thumb_image.url">
+        </div>
+        <ion-buttons class="content-box">
+          <p class="item-title three-dots-3">{{ item.title }}</p>
+          <ion-buttons class="bottom-box text">
+            <ion-buttons>
+              <ion-icon name="time" class="time"></ion-icon>
+              <ion-label> {{item.time}} {{ item.yymmdd }}</ion-label>
+            </ion-buttons>
+            <ion-buttons>
+              <ion-icon name="eye" class="eye"></ion-icon>
+              <ion-label>{{ item.views }}</ion-label>
+            </ion-buttons>
+          </ion-buttons>
+        </ion-buttons>
+      </ion-buttons>
+    </ng-container>
+  </ion-list>
+  <ion-list *ngIf="!news.length && notFound" class="not-found">
+    Không tìm thấy 
+  </ion-list>
+  <ion-infinite-scroll #infiniteScroll (ionInfinite)="loadMoreData($event)">
+    <ion-infinite-scroll-content loadingSpinner="lines"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

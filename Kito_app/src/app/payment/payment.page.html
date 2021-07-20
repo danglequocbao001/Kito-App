@@ -1,0 +1,23 @@
+<app-header  [headerCustom]="headerCustom"></app-header>
+
+<ion-content>
+  <ion-item-group class="ion-padding">
+    <ion-label class="title">
+      Tổng đơn hàng:
+     </ion-label>
+     <ion-label class="content">
+      {{amount}} vnd
+     </ion-label>
+     <ion-label class="title">
+     Mục đích:
+     </ion-label>
+     <span class="content">
+      {{purpose}}
+     </span>
+    <form  (ngSubmit)="showStripe()">
+      <ion-button type="submit" >Thanh toán</ion-button>
+    </form>
+  </ion-item-group>
+ 
+</ion-content>
+

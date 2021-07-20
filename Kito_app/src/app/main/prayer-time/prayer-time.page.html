@@ -1,0 +1,53 @@
+<ion-content [style.--padding-top]="paddingTopIonContent()">
+  <ion-back-button icon="chevron-back-outline" text="" class="back-btn"></ion-back-button>
+
+  <div class="fixed" #fixed>
+    <div class="img-container main-box-shadow">
+      <img [src]="parish?.thumb_image?.url">
+    </div>
+
+    <div class="parish-name" *ngIf="!parish">{{ parish?.name }}</div>
+    <ion-buttons class="parish-address-box active-effect">
+      <span class="parish-address" (click)="goToMap()">{{ parish?.address }}</span>
+      <ion-icon name="navigate" (click)="goToMap()"></ion-icon>
+    </ion-buttons>
+    <div class="see-more-box">
+      <span (click)="seeMore()">Xem lễ giáo xứ khác?</span>
+    </div>
+
+    <ion-buttons class="date-list">
+      <ion-buttons *ngFor="let dateItem of dateList" class="date-item active-effect"
+        [ngClass]="{'active-date-item': activeDateItemId == dateItem.id}" (click)="changeSegment(dateItem.id)"
+        [ngStyle]="{'background-color': dateItem.color, 'color': dateItem.color === '#FFFFFF' ? '#424242' : '#fff'}">
+        <span class="date-text">{{ dateTimeService.VIETNAMESE_DAYS[dateItem.date.getDay()].substring(0, 3)}}</span>
+        <span *ngIf="checkDate(dateItem.date.getDate()) < 10">0{{ dateItem.date.getDate() }}</span>
+        <span *ngIf="checkDate(dateItem.date.getDate()) >= 10" >{{ dateItem.date.getDate() }}</span>
+        <!-- <span *ngIf="dateItem.events.length" class="circle date-item-note" [style.background]="dateItem.color"></span> -->
+      </ion-buttons>
+    </ion-buttons>
+  </div>
+
+  <ion-slides #slides [options]="slideOptions" (ionSlideDidChange)="changeSegmentSlide()"
+    (ionSlideWillChange)="scrollToTop(300)">
+    <ion-slide *ngFor="let dateItem of dateList">
+      <div class="body-header">
+        <ion-label>{{ dateTimeService.getDateString3(dateItem.date) }}</ion-label>
+        <ion-label *ngIf="dateItem.events.length" class="item-name">{{ dateItem.name }}</ion-label>
+      </div>
+
+      <div *ngIf="!dateItem.events.length" class="empty-list-text">Không có giờ lễ</div>
+
+      <ion-list class="event-list">
+        <div *ngFor="let event of dateItem.events" class="event active-effect"
+          (click)="goToEventDetail(dateItem, event)">
+          <ion-label class="event-name">{{ event.name }}</ion-label>
+          <ion-label class="event-time">{{ dateTimeService.getTimeString(event.start_time) }}</ion-label>
+          <ion-buttons class="ion-align-items-end ion-justify-content-between">
+            <ion-text class="three-dots-2 event-text">{{ event.description }}</ion-text>
+            <img src="assets/icon/three-dots-gray.svg" class="three-dots-icon">
+          </ion-buttons>
+        </div>
+      </ion-list>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

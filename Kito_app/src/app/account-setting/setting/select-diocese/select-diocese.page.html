@@ -1,0 +1,14 @@
+<ion-header>
+	<app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <app-search-bar-nav></app-search-bar-nav>
+
+  <ion-list>
+    <div *ngFor="let item of list" class="active-effect" (click)="choose(item)">
+      <img class="cover-img" [src]="item.thumb_image.url">
+      <ion-label class="absolute-center">{{ item.name }}</ion-label>
+    </div>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,95 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="onScrollContent($event)" *ngIf="years.length > 0">
+  <div class="fixed">
+    <div class="years">
+      <ion-buttons class="selected-year-box" (click)="toggleHasYearOptions(true)">
+        <span class="selected-year">Năm {{ selectedYear }}</span>
+        <div class="triangle"></div>
+        <div class="year-options" *ngIf="hasYearOptions">
+          <div class="year-option" [ngClass]="{'selected-year-option': year.number == selectedYear}"
+            *ngFor="let year of years" (click)="changeYear(year)">{{ year.number }}</div>
+        </div>
+      </ion-buttons>
+    </div>
+
+    <ng-container *ngFor="let year of years">
+      <div *ngIf="year.number == selectedYear" class="segment-container">
+        <ion-buttons class="segment" #segment>
+          <div class="segment__item" [ngClass]="{'segment__item--selected': selectedMonthId == month.id}"
+            *ngFor="let month of year.months" (click)="changeSegment(month.id, $event)">
+            {{ month.name }}
+          </div>
+        </ion-buttons>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="body">
+    <ng-container *ngFor="let year of years">
+      <ion-slides *ngIf="selectedYear == year.number" #slides [options]="slideOptions"
+        (ionSlideWillChange)="scrollToTop(300)" (ionSlidesDidLoad)="disableSwipe()">
+        <ion-slide *ngFor="let month of year.months">
+          <div class="top-box">
+            <ion-buttons class="top-box-header">
+              <span class="top-box-header-label">Số ngày tham dự thánh lễ:</span>
+              <div class="top-box-header-content">
+                {{ calJoinedEvents(month.dates) }}/{{ month.dates.length }}
+              </div>
+            </ion-buttons>
+
+            <div class="top-box-body">
+              <div class="bar">
+                <ion-buttons class="bar-header">
+                  <span class="bar-header-label">Lễ trọng</span>
+                  <span class="bar-header-content">
+                    {{ calJoinedSpecialEvents(month.dates) }}/{{ calSpecialEvents(month.dates) }}
+                  </span>
+                </ion-buttons>
+                <ion-progress-bar class="bar-body"
+                  [value]="calJoinedSpecialEvents(month.dates) / calSpecialEvents(month.dates)"></ion-progress-bar>
+              </div>
+              <div class="bar">
+                <ion-buttons class="bar-header">
+                  <span class="bar-header-label">Lễ thường</span>
+                  <span class="bar-header-content">
+                    {{ calJoinedEvents(month.dates) - calJoinedSpecialEvents(month.dates) }}/{{ month.dates.length -
+                    calSpecialEvents(month.dates) }}
+                  </span>
+                </ion-buttons>
+                <ion-progress-bar class="bar-body" [value]="(calJoinedEvents(month.dates) - calJoinedSpecialEvents(month.dates)) / (month.dates.length -
+              calSpecialEvents(month.dates))"></ion-progress-bar>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-box">
+            <div class="bottom-box-header">Chi tiết</div>
+            <div class="bottom-box-body">
+              <ion-buttons class="bottom-box-body-label">
+                <div>T2</div>
+                <div>T3</div>
+                <div>T4</div>
+                <div>T5</div>
+                <div>T6</div>
+                <div>T7</div>
+                <div>CN</div>
+              </ion-buttons>
+              <ion-buttons class="bottom-box-body-content">
+                <div *ngFor="let date of month.dates">
+                  <ion-buttons [ngClass]="{'joined-date': date.hasJoin}">{{ date.number }}</ion-buttons>
+                </div>
+              </ion-buttons>
+              <ion-buttons class="bottom-box-body-note">
+                <div class="circle"></div>
+                <span>Có tham dự lễ</span>
+              </ion-buttons>
+            </div>
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </ng-container>
+  </div>
+</ion-content>

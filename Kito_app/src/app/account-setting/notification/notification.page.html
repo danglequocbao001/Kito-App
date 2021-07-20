@@ -1,0 +1,38 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+<ion-content>
+  <ion-item-group class="fixed">
+    <ion-item-group class="content">
+      <ion-segment mode="ios">
+        <ion-segment-button> Thông báo mới! </ion-segment-button>
+      </ion-segment>
+    </ion-item-group>
+  </ion-item-group>
+
+  <ion-item-group class="event-list-container">
+    <ion-list class="event-list">
+      <ion-item-group
+        *ngFor="let item of orders; let i = index;"
+        class="event"
+        (click)="openOrderDetailModal(item)"
+      >
+      <ion-label class="order-last" *ngIf = "i == 0">Thông báo mới nhất</ion-label>
+
+        <ion-buttons class="ion-align-items-start ion-justify-content-between">
+          <h3 class="event-name">ID thông báo: {{ item.id }}</h3>
+          <img class="triangle" src="assets/icon/triangle.svg" />
+        </ion-buttons>
+        <span class="event-time">
+          Trạng thái: {{ item.status }}
+        </span>
+        <span class="event-time">
+          Tạo lúc: {{ item.created_at.substring(0, 10) }}
+        </span>
+      </ion-item-group>
+      <!-- <ion-infinite-scroll  #infiniteScroll (ionInfinite)="loadMoreData($event)">
+        <ion-infinite-scroll-content loadingSpinner ="lines"></ion-infinite-scroll-content>
+      </ion-infinite-scroll> -->
+    </ion-list>
+  </ion-item-group>
+</ion-content>

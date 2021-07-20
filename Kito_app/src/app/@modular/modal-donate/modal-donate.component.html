@@ -1,0 +1,22 @@
+<ion-content>
+  <ion-icon class="icon-close" (click)="closeModal()" name="close-outline"></ion-icon>
+  <ion-item-group class="donate-main">
+    <ion-label class="text-title">
+      Lựa chọn {{title}}
+    </ion-label>
+    <ion-item-group class="list-item">
+      <ion-item-group class="item"(click)="gotoDestination()">
+        <ion-label class="text-item">
+          Giáo Phận 
+        </ion-label>
+      </ion-item-group>
+      <ion-item-group class="item" (click)="goToParishes()" >
+        <ion-label class="text-item">
+          Giáo Xứ
+        </ion-label>
+      </ion-item-group>
+    </ion-item-group>
+  </ion-item-group>
+  
+ 
+</ion-content>

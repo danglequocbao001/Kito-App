@@ -1,0 +1,91 @@
+ion-content {
+  --padding-top: 80px;
+  --overflow: hidden;
+}
+.support-main {
+  width: 100%;
+  .support-backgroup {
+    background-image: url("../../../assets/img/info-app/trogiup.jpg");
+    height: 70vw;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+
+    .text-title {
+      margin-top: 30vw;
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: bolder;
+      color: #ffffff;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .search-bar-container {
+      background: #ffffff;
+      border-radius: 30px;
+      position: relative;
+      width: 80%;
+      ion-searchbar {
+        --background: #fff;
+        --icon-color: #cacaca;
+        --placeholder-color: #cacaca;
+        --placeholder-opacity: 1;
+        --color: #6c6c6c;
+        height: 36px;
+        padding: 0 5px;
+      }
+      .voice {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        right: 25px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 99;
+        color: #c8c8c8;
+      }
+    }
+  }
+}
+.support-content {
+  padding: 0 15px;
+  overflow: scroll;
+  height: calc(100% - 70vw);
+  .text-support {
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #828282;
+    margin-left: 10px;
+    margin-top: 15px;
+  }
+  .list-support {
+    .support-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      box-shadow: 0px 1px 3px rgba(61, 61, 61, 0.25);
+      border-radius: 25px;
+      padding: 0 15px;
+      margin: 20px 0;
+      .icon-right {
+        height: 18px;
+        width: 9px;
+      }
+      p {
+        font-size: 14px;
+        color: #424242;
+      }
+      ion-icon {
+        color: #c8c8c8;
+        font-size: 27px;
+      }
+    }
+  }
+}

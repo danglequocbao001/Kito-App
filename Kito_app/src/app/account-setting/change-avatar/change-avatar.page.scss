@@ -1,0 +1,44 @@
+ion-content {
+  --background: #fff;
+  --padding-top: calc(80px);
+  --padding-start: 5px;
+  --padding-end: 5px;
+  --overflow: hidden;
+}
+.avatar-list {
+  display: flex;
+  flex-wrap: wrap;
+  // justify-content:space-between;
+  padding: 0 3vw;
+  height: calc(100vh - 80px - 50px);
+  overflow: scroll;
+  .avatar-item {
+    width: calc(74vw / 3);
+    height: calc(74vw / 3);
+    margin: 5px 10px;
+  }
+  @media screen and (max-height: 569px) {
+    .avatar-item {
+      width: calc(72vw / 3);
+      height: calc(72vw / 3);
+    }
+  }
+}
+ion-avatar {
+  transition: all 0.1s;
+  width: 100%;
+  height: 100%;
+}
+.activeAvatar {
+  border: 4px solid #f6c33e;
+  filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.25));
+  padding: 5px;
+}
+.btn-ok {
+  --background: #f6c33e;
+  --border-radius: 30px;
+  display: block;
+  margin: auto;
+  width: 100px;
+  padding-top: 7px;
+}

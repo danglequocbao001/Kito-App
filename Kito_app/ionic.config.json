@@ -1,0 +1,10 @@
+{
+  "name": "Công giáo VN",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {
+      "enabled": false
+    }
+  },
+  "type": "angular"
+}

@@ -1,0 +1,39 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content>
+  <div class="list-menu-ques">
+    <!-- <h3 class="title-ques">ĐỐ VUI GIÁO LÝ</h3> -->
+    <div (click)="goToChooseQuestionType('topic')" class="menu-item active-effect">
+      <img src="assets/img/questionares/cloud1.svg" alt="" srcset="" />
+      <p class="choose-text">Theo chủ đề</p>
+    </div>
+    <div (click)="goToChooseQuestionType('level')" class="menu-item item-right active-effect">
+      <img src="assets/img/questionares/cloud2.svg" alt="" srcset="" />
+      <p class="choose-text">Theo cấp độ</p>
+    </div>
+    <div (click)="rule()" class="menu-item active-effect">
+      <img src="assets/img/questionares/cloud3.svg" alt="" srcset="" />
+      <p class="choose-text">Luật chơi</p>
+    </div>
+    <div (click)="rank()" class="menu-item active-effect">
+      <img src="assets/img/questionares/cloud4.svg" alt="" srcset="" />
+      <p class="choose-text">Bảng xếp hạng</p>
+    </div>
+  </div>
+  <div class="background-gif">
+    <div class="img-star1">
+      <img src="assets/img/questionares/star.gif" alt="" srcset="" />
+    </div>
+    <div class="img-star2">
+      <img src="assets/img/questionares/star2.gif" alt="" srcset="" />
+    </div>
+    <div class="img-star3">
+      <img src="assets/img/questionares/star.gif" alt="" srcset="" />
+    </div>
+    <div class="img-star3">
+      <img src="assets/img/questionares/star2.gif" alt="" srcset="" />
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,29 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content [ngClass]="{'disable-scroll': !list.length}">
+  <app-search-bar-nav (output)="search($event)"></app-search-bar-nav>
+
+  <ion-list>
+    <ion-buttons *ngFor="let item of list" class="item" (click)="goToNewsDetail(item)">
+      <div class="img-box">
+        <img class="cover-img" [src]="item?.thumb_image?.url">
+      </div>
+      <div class="text-box">
+        <span class="title three-dots-2">
+          {{ item?.title || item?.name }}
+        </span>
+        <span class="content three-dots-4">
+          {{ item?.description || item?.address }}
+        </span>
+      </div>
+    </ion-buttons>
+  </ion-list>
+<ion-list *ngIf="!list.length && notFound" class="not-found">
+  Không tìm thấy
+</ion-list>
+  <ion-infinite-scroll #infiniteScroll (ionInfinite)="loadMoreData($event)">
+    <ion-infinite-scroll-content loadingSpinner="lines"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

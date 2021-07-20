@@ -1,0 +1,27 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content>
+
+  <div class="list-container">
+    <ion-buttons class="list">
+      <div *ngFor="let item of list" class="item">
+        <span class="name">{{ item.name }}</span>
+        <ion-buttons class="ion-align-items-start">
+          <ion-icon name="alarm"></ion-icon>
+          <span class="time">{{ formatTime(item.start_time) }} - {{formatTime(item.end_time)}}</span>
+        </ion-buttons>
+        <span class="day">{{ item.calendar_detail }}</span>
+        <ion-buttons class="ion-align-items-start">
+          <img class="icon" src="assets/icon/location.svg">
+          <span class="room">{{ item.room_detail.name }}</span>
+        </ion-buttons>
+
+        <span (click)="openAlertRegister(item.id,true, 'Đăng ký')" *ngIf="!item.register" class="btn" [ngClass]="{'btn--disabled': !item.available}">{{ item.available ? 'Đăng ký'
+          : 'Hết' }}</span>
+          <span (click)="openAlertRegister(item.id,false, 'Hủy đăng ký')" *ngIf="item.register" class="btn" [ngClass]="{'btn--success': item.register}" >Đã Đăng Ký</span>
+      </div>
+    </ion-buttons>
+  </div>
+</ion-content>

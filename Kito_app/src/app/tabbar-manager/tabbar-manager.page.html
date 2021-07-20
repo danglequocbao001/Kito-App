@@ -1,0 +1,42 @@
+<!-- <ion-tabs method=select(main)>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="main">
+      <ion-icon src="assets/icon/tab/main.svg"></ion-icon>
+      <ion-text>Trang chủ</ion-text>
+    </ion-tab-button>
+    
+    <ion-tab-button tab="social">
+      <ion-img></ion-img>
+      <ion-icon src="assets/icon/tab/social.svg"></ion-icon>
+      <ion-text>Cộng Đồng</ion-text>
+    </ion-tab-button>
+    
+    <ion-tab-button tab="personal">
+      <ion-icon src="assets/icon/tab/personal.svg"></ion-icon>
+      <ion-text>Cá nhân</ion-text>
+    </ion-tab-button> 
+  </ion-tab-bar>
+</ion-tabs> -->
+<ion-tabs>
+  <ion-tab-bar slot="bottom" >
+    <ion-tab-button *ngFor="let tab of footerList" (click)="setCurrentTab(tab)" [tab]="tab.tab">
+      <i class="fad fa-copyright"></i>
+      <ion-icon [src]="tab.imgSrc"></ion-icon>
+      <ion-label *ngIf="tab.active">{{tab.title}}</ion-label>
+    </ion-tab-button>
+    <!-- <ion-tab-button tab="news">
+      <i class="far fa-newspaper"></i>
+      <ion-label>{{footerList[1].title}}</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="favorite">
+      <i class="far fa-star"></i>
+      <ion-label>{{footerList[2].title}}</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="setting-account">
+      <i class="fas fa-sliders-h"></i>
+      <ion-label>{{footerList[3].title}}</ion-label>
+    </ion-tab-button> -->
+
+
+  </ion-tab-bar>
+</ion-tabs>

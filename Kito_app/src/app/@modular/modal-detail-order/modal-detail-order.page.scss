@@ -1,0 +1,116 @@
+ion-content {
+    --background: #eee;
+}
+.backdrop-event-detail {
+    opacity: 1;
+    background: #eee;
+}
+.text {
+    color: #999393;
+    font-size: 14px;
+    line-height: 21px;
+    margin-top: 5px;
+}
+.body {
+    padding: 5px 28px 28px;
+    overflow: scroll;
+  
+    @media screen and (max-width: 320px) {
+      padding: 5px 10px 10px;
+    }
+    ion-buttons {
+        .title {
+            color: #434141;
+            font-size: 20px;
+            font-weight: 600;
+            margin-right: 100px;
+            margin-top: 0;
+            text-align: left;
+        }
+    }
+    .details {
+        margin: 0;
+        padding: 0;
+        .detail {
+            color: #9c9c9c;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 0;
+            text-align: left;
+            margin-bottom: 7px;
+            margin-top: 7px;
+            &:first-child {
+                margin-top: 0px;
+            }
+            &:last-child {
+                margin-bottom: 0px;
+            }
+        }
+    }
+    .food-detail-cover {
+        background-color: #eee;
+        .food-detail {
+            max-width: 320px;
+            margin: auto;
+            border-bottom: 2px solid #F8F8F8;
+            padding: 18px 0px;
+            justify-content: space-between;
+            &:last-child {
+                border-bottom: none;
+            }
+            img {
+                width: 80px;
+                height: auto;
+                border-radius: 10px;
+            }
+            .amount {
+                width: 30px;
+                justify-content: center;
+                transform: translateY(-2px);
+                span {
+                    font-weight: 600;
+                    transform: translateY(2px);
+                    margin-left: -2px;
+                    
+                }
+            }
+            .food-name {
+                margin-left: 20px;
+                font-size: 16px;
+                font-weight: 600;
+            }
+            
+            .price {
+                text-align: right;
+            }
+            .icon-remove {
+                margin-right: 20px;
+            }
+    
+        }
+    }
+    .group3-row-1 {
+        .group3-row1-total {
+            padding: 20px 0;
+            margin-left: 30px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .group3-row1-prices {
+            padding: 20px 0;
+            margin: auto;
+            margin-right: 25px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+    }
+    ion-button {
+        width: 170px;
+        height: 40px;
+        display: block;
+        margin: auto;
+        font-size: 18px;
+        --border-radius: 15px;
+        --background: #F6C33E;
+    }
+}

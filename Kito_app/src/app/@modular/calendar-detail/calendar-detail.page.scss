@@ -1,0 +1,98 @@
+ion-content {
+    --padding-top: 80px;
+
+    H3 {
+        text-align: center;
+        color: #fff;
+
+    }
+
+    .group-main {
+        ion-text {
+            text-align: center;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            font-size: 20px;
+            background-color: #F6C33E;
+            width: 100%;
+        }
+
+        .main {
+            position: relative;
+            height: 300px;
+            display: flex;
+
+            .date {
+                margin: 0 auto;
+                display: block;
+                text-align: center;
+                font-size: 170px;
+                font-weight: 500;
+                z-index: 1;
+                color: #525252;
+
+                .date-number {
+                    color: #424242;
+                    -webkit-text-stroke: 3px #fff;
+                    display: block;
+                    margin: 0 auto;
+                }
+
+                .date-name {
+                    font-size: 16px;
+                    width: 80%;
+                    display: block;
+                    margin: 0 auto;
+                }
+
+            }
+
+            &:before {
+                background-image: url("./../../../assets/img/calendar/calendar-date.jpg");
+
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                content: " ";
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                opacity: 0.15;
+            }
+        }
+
+        .date-info {
+            max-width: 200px;
+            margin: 0 auto;
+            text-align: center;
+            border: 2px solid #b7b7b7;
+            border-radius: 10px;
+            margin-top: 26px;
+            padding: 30px 20px;
+            font-size: 21px;
+            font-weight: 500;
+            .day {
+                color: #CC9D3E;
+            }
+            .day-month {
+                color: #696969;
+            }
+        }
+        .note {
+            h6 {
+                text-align: center
+            }
+            .title {
+
+            }
+        }
+
+    }
+
+}

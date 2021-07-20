@@ -1,0 +1,46 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content [ngClass]="{'disable-scroll': !listPriest.length}">
+  <ion-segment value="intro" swipeGesture="false" mode="ios">
+    <ion-segment-button value="intro" class="intro" (click)="changeTabs()">
+      <ion-label>Giới thiệu Giáo xứ</ion-label>
+    </ion-segment-button>
+    <ion-segment-button
+      value="biography"
+      class="biography"
+      (click)="changeTabs()"
+    >
+      <ion-label>Tiểu sử các Linh Mục</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-item-group class="segement-news ion-padding" *ngIf="tabNew">
+    <ion-label> {{data?.name}}</ion-label>
+    <div [style.background]="getUrl()" class="bg"></div>
+    <span [innerHTML]="data?.parish_info?.content"> </span>
+  </ion-item-group>
+  <ion-item-group class="home" *ngIf="!tabNew">
+    <ion-item-group class="list-item">
+      <ion-list
+        *ngFor="let item of listPriest"
+        class="item-stories"
+        (click)="goToStoryDetail(item)"
+      >
+        <img src="{{item.thumb_image.url}}" alt="" />
+        <ion-item-group class="stories-info">
+          <ion-label text-wrap class="stories-title">{{item.title}}</ion-label>
+          <p
+            class="stories-content three-dots-3"
+            [innerHTML]="item.description"
+          ></p>
+        </ion-item-group>
+      </ion-list>
+      <ion-infinite-scroll #infiniteScroll (ionInfinite)="loadMoreData($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="lines"
+        ></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-item-group>
+  </ion-item-group>
+</ion-content>

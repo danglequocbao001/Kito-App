@@ -1,0 +1,40 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content>
+  <div class="body">
+    <ion-buttons class="date-list">
+      <ion-buttons
+        *ngFor="let d of dateList"
+        class="date-item main-box-shadow active-effect"
+        [ngClass]="{'active-date-item': dateActive == d.id}"
+        (click)="changeDateItem(d)"
+        [ngStyle]="{'background-color': d.color, 'color': d.color === '#FFFFFF' ? '#424242' : '#fff'}"
+      >
+        <span class="date-text"
+          >{{ dateTimeService.VIETNAMESE_DAYS[d.date.getDay()].substring(0, 3)
+          }}</span
+        >
+        <span>{{ d.date.getDate() }}</span>
+        <!-- <span *ngIf="d.events.length" class="circle date-item-note" [style.background]="d.color"></span> -->
+      </ion-buttons>
+    </ion-buttons>
+
+    <div class="body-header">
+      <ion-label>{{ dateTimeService.getDateString3(dateItem.date) }}</ion-label>
+      <ion-label *ngIf="dateItem.events.length" class="item-name"
+        >{{ dateItem.name }}</ion-label
+      >
+      <p class="event-text">{{ event.description }}</p>
+      <ion-label class="item-name">Danh sách những người đi lễ</ion-label>
+      <ion-list *ngFor="let p of event.prayers">
+        <p class="user_name"> {{p.user_name}} </p>
+        <ion-label> Lời cầu nguyện: </ion-label>
+        <p>{{p.note}}</p>
+      </ion-list>
+     
+      <span></span>
+    </div>
+  </div>
+</ion-content>

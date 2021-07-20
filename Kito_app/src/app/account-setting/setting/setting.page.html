@@ -1,0 +1,20 @@
+<ion-header>
+	<app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content>
+	<ion-buttons *ngFor="let item of items" class="item active-effect" (click)="goToDetail(item)">
+		<ion-buttons class="left-box">
+			<div class="img-container">
+				<img class="img" [src]="item.icon">
+			</div>
+			<span class="title">{{ item.title }}</span>
+		</ion-buttons>
+		<ion-buttons class="right-box">
+			<span class="content">{{ item.name }}</span>
+			<ion-buttons class="icon-container">
+				<ion-icon name="chevron-forward-outline"></ion-icon>
+			</ion-buttons>
+		</ion-buttons>
+	</ion-buttons>
+</ion-content>

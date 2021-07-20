@@ -1,0 +1,34 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content>
+  <div class="text-title">
+    <ion-label>BẠN ĐÃ CHỌN</ion-label>
+  </div>
+  <div class="container-content">
+    <ion-label *ngIf="data.level">{{data?.name}}</ion-label>
+    <img *ngIf="data.level" class="choose-img" src="{{ data?.thumb_image?.url }}" />
+    <div *ngIf="!data.level" class="img-topic">
+      <img class="choose-img-topic" src="{{ data?.thumb_image?.url }}" />
+      <ion-label>{{data?.name}}</ion-label>
+
+    </div>
+  </div>
+  <ion-buttons class="list-buttons">
+    <button (click)="gotoQuestion()">BẮT ĐẦU </button>
+    <button (click)="goBack()">QUAY LẠI</button>
+  </ion-buttons>
+
+</ion-content>
+<div class="background-gif">
+  <div class="img-star2">
+    <img src="assets/img/questionares/star2.gif" alt="" srcset="" />
+  </div>
+  <div class="img-star4">
+    <img src="assets/img/questionares/star2.gif" alt="" srcset="" />
+  </div>
+  <div class="img-star3">
+    <img src="assets/img/questionares/star2.gif" alt="" srcset="" />
+  </div>
+</div>

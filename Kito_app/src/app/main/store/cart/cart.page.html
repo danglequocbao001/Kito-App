@@ -1,0 +1,108 @@
+<ion-header class="ion-no-border" (click)="onCheckClickOutsidePaymentSelect($event)">
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="backdrop-payment-modal" [ngClass]="{ 'display-none': !hasPaymentModal }"
+    (click)="toggleHasPaymentModal(false)"></div>
+
+  <div class="address-box">
+    <form action="" [formGroup] ="frm" >
+    <ion-label class="address-title">Giao hàng đến:</ion-label>
+    <ion-buttons class="address-content">
+      <img src="assets/icon/location.svg">
+        <input formControlName ="address" id="address" class="address" type="text" [(ngModel)]="address">
+    </ion-buttons>
+    
+    <div class="change-address-box">
+      <ion-label class="active-effect" (click)="reTakeLocation()">Lấy địa chỉ</ion-label>
+      <ion-label class="active-effect" (click)="changeAddress()">Thay đổi</ion-label>
+    </div>
+    <ion-label class="address-title">SDT người nhận:</ion-label>
+    <ion-buttons class="address-content phone-content">
+        <input formControlName ="phone_number" id="phone_number" class="address phone" type="text" [(ngModel)]="phone_number">
+    </ion-buttons>
+    <div class="change-address-box">
+      <ion-label class="active-effect" (click)="changePhoneNumber()">Thay đổi</ion-label>
+    </div>
+    <ion-label class="address-title">Ghi chú:</ion-label>
+    <ion-buttons class="address-content phone-content">
+      <input formControlName ="note" id="note" class="address phone" type="text" [(ngModel)]="note">
+    </ion-buttons>
+    <div class="change-address-box">
+      <ion-label class="active-effect" (click)="changeNote()">Thêm ghi chú</ion-label>
+    </div>
+  </form>
+
+  </div>
+
+  <div class="list-box">
+    <ion-buttons class="list-title">
+      <ion-label class="title-left">Đơn hàng</ion-label>
+      <!-- <ion-label class="title-right active-effect" (click)="goBackToStore()">Thêm sản phẩm</ion-label> -->
+    </ion-buttons>
+
+    <ion-list class="list">
+      <ion-buttons class="item" *ngFor="let item of cart">
+        <span class="item-name">{{ item.name }}</span>
+
+        <ion-buttons class="modifier">
+          <ion-buttons class="modifier-btn modifier-btn-decrease active-effect" (click)="decreaseAmount(item)">-
+          </ion-buttons>
+          <span class="counter">{{ item.amount }}</span>
+          <ion-buttons class="modifier-btn modifier-btn-increase active-effect" (click)="increaseAmount(item)">+
+          </ion-buttons>
+        </ion-buttons>
+
+        <ion-buttons class="price-box">
+          <span class="item-price">{{ dateTimeService.numberWithCommas(calPrice(item)) }} {{ item.unitPrice }}</span>
+          <img class="remove-btn active-effect" src="assets/icon/remove.svg" (click)="removeItem(item)">
+        </ion-buttons>
+      </ion-buttons>
+    </ion-list>
+  </div>
+
+  <div class="total-box">
+    <ion-buttons class="total-item">
+      <ion-label>Tổng tiền hàng</ion-label>
+      <span class="total-price">{{ dateTimeService.numberWithCommas(calTotalPrice()) }} đ</span>
+    </ion-buttons>
+    <ion-buttons class="total-item">
+      <ion-label>Phí giao hàng</ion-label>
+      <span class="total-price">{{ cart.length ? dateTimeService.numberWithCommas(shipCost) : 0 }} đ</span>
+    </ion-buttons>
+    <ion-buttons class="total-item">
+      <ion-label class="total-title-bold">Tổng thanh toán</ion-label>
+      <span class="total-title-bold total-price">{{ cart.length ? dateTimeService.numberWithCommas(calTotalPrice() +
+        shipCost) : 0}} đ</span>
+    </ion-buttons>
+  </div>
+</ion-content>
+
+<ion-footer (click)="onCheckClickOutsidePaymentSelect($event)">
+  <ion-buttons class="ion-justify-content-around">
+    <div class="payment-method-container" (click)="toggleHasPaymentModal(true)">
+      <ng-container *ngFor="let paymentMethod of paymentMethods">
+        <ion-buttons class="payment-method" *ngIf="currentPaymentMethodId == paymentMethod.id">
+          <img class="payment-method-icon" [src]="paymentMethod.srcIcon">
+          <span class="payment-method-name three-dots-1">{{ paymentMethod.name }}</span>
+          <ion-icon name="chevron-up-outline"></ion-icon>
+        </ion-buttons>
+      </ng-container>
+    </div>
+
+    <ion-button class="order-btn active-effect" [disabled]="check()" (click)="goToCheckout()">Đặt hàng</ion-button>
+  </ion-buttons>
+
+  <div class="payment-method-modal" *ngIf="hasPaymentModal" (click)="onClickPaymentModal()">
+    <ion-label class="payment-method-modal__title">Phương thức thanh toán</ion-label>
+
+    <ion-list style="padding: 0;">
+      <ion-buttons *ngFor="let paymentMethod of paymentMethods" class="payment-method"
+        (click)="changePayment(paymentMethod)">
+        <img class="payment-method-icon" [src]="paymentMethod.srcIcon">
+        <span class="payment-method-name">{{ paymentMethod.name }}</span>
+      </ion-buttons>
+    </ion-list>
+  </div>
+</ion-footer>

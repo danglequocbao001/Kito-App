@@ -1,0 +1,19 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content>
+  <div class="avatar-list">
+    <div (click)="avatarSetting()" class="avatar-item">
+        <ion-avatar class="active-effect">
+          <img src="assets/img/change-avatar/add-avatar.svg" alt="" srcset="">
+        </ion-avatar>
+    </div>
+    <div  *ngFor="let item of listAvatar" class="avatar-item" >
+      <ion-avatar (click)=activeAvatar(item) [ngClass]="{'activeAvatar':checkActivedItem(item)}">
+        <img [src]="item" alt="" >
+      </ion-avatar>
+    </div>
+  </div>
+  <ion-button *ngIf="activedAvatar != null" (click)="updateAvatar()" class="btn-ok">Xác Nhận</ion-button>
+</ion-content>

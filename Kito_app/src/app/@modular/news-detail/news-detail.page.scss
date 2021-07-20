@@ -1,0 +1,33 @@
+ion-content {
+  --padding-top: calc(80px);
+  ion-icon {
+    color: #828282;
+    margin-left: 4px;
+  }
+}
+
+.main-title {
+  font-size: 18px;
+  color: #002D63;
+  font-weight: 500;
+  margin: 10px 20px;
+  display: block;
+  text-align: center;
+}
+.text {
+  color: #828282;
+  font-size: 16px;
+  line-height: 1.5;
+  // display: inline-flex;
+  margin: 12px;
+  margin-bottom: 0;
+}
+.name {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-map {
+    color: #F6C33E;
+    text-decoration: underline;
+}

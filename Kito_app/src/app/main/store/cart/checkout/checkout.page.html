@@ -1,0 +1,56 @@
+<ion-header class="ion-no-border">
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="address-box">
+    <ion-label class="address-title">Giao hàng đến:</ion-label>
+    <ion-buttons class="address-content">
+      <img src="assets/icon/location.svg">
+      <p class="address">{{address}}</p>
+    </ion-buttons>
+    <ion-label class="address-title">SDT người nhận:</ion-label>
+    <ion-buttons class="address-content phone-content">
+      <p class="address phone">{{phone}}</p>
+    </ion-buttons>
+  </div>
+
+  <div class="list-box">
+    <ion-label class="list-title">Đơn hàng</ion-label>
+
+    <ion-list class="list">
+      <ion-buttons class="item" *ngFor="let item of cart">
+        <ion-label class="item-amount">{{ item.amount }}x</ion-label>
+        <span class="item-name">{{ item.name }}</span>
+
+        <ion-buttons class="price-box">
+          <span class="item-price">{{ dateTimeService.numberWithCommas(calPrice(item)) }} {{ item.unitPrice }}</span>
+        </ion-buttons>
+      </ion-buttons>
+    </ion-list>
+  </div>
+
+  <div class="total-box">
+    <ion-buttons class="total-item">
+      <ion-label>Phí giao hàng</ion-label>
+      <span class="total-price">{{ cart.length ? dateTimeService.numberWithCommas(shipCost) : 0 }} đ</span>
+    </ion-buttons>
+    <ion-buttons class="total-item">
+      <ion-label class="total-title-bold">Tổng thanh toán</ion-label>
+      <span class="total-title-bold total-price">{{ cart.length ? dateTimeService.numberWithCommas(calTotalPrice() +
+        shipCost) : 0}} đ</span>
+    </ion-buttons>
+  </div>
+
+  <div class="payment-method-box">
+    <ion-label class="payment-method-title">Phương thức thanh toán</ion-label>
+    <ion-buttons class="payment-method">
+      <img class="payment-method-icon" [src]="paymentMethod.srcIcon">
+      <span class="payment-method-name">{{ paymentMethod.name }}</span>
+    </ion-buttons>
+  </div>
+
+  <div class="ion-text-center">
+    <ion-button class="order-btn active-effect" (click)="confirm()">Xác nhận</ion-button>
+  </div>
+</ion-content>

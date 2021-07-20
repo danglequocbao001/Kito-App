@@ -1,0 +1,65 @@
+ion-content {
+    --padding-top: calc(80px + 45px);
+    --padding-start: 4.5vw;
+    --padding-end: 4.5vw;
+}
+.title-text {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    color: #424242;
+}
+.lyric {
+    text-align: justify;
+    font-size: 16px;
+    line-height: 40px;
+    color: #828282;
+    height: 400px;
+    overflow-y: scroll;
+}
+.footer-inner {
+    padding: 10px 10px 15px;
+
+    .footer-left {
+        width: calc(100% - 154px);
+
+        .avatar {
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+            animation: spin 15s linear infinite;
+        }
+
+        .active-tract-info {
+            width: calc(100% - 70px);
+
+            .active-track-name {
+                color: #424242;
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            .active-track-author {
+                color: #828282;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .footer-right {
+        margin-left: 10px;
+
+        ion-icon {
+            color: #c8c8c8;
+            font-size: 32px;
+            padding: 8px;
+        }
+    }
+}
+
+.range {
+    height: 0;
+    --bar-background: #c8c8c8;
+    --bar-background-active: #f6c33e;
+}

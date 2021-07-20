@@ -1,0 +1,40 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+<ion-content>
+
+  <div *ngIf="data" class="modal-content">
+    <p *ngIf="data" class="title-text">{{data.name}}</p>
+
+    <div #contentLyric class="lyric" [innerHTML]="data.lyric">
+
+    </div>
+
+
+  </div>
+</ion-content>
+<ion-footer *ngIf="activeSong" class="ion-no-border">
+  <ion-buttons style="padding: 0 13px 0 5px;">
+    <ion-range class="range" mode="md" #range [(ngModel)]="progress" max="100" (touchend)="seek()" (mouseup)="seek()">
+    </ion-range>
+    <ion-buttons class="duration-box">
+      <span>{{ secondsToHms(player.seek())}}</span>
+      /
+      <span>{{ secondsToHms(player.duration()) }}</span>
+    </ion-buttons>
+  </ion-buttons>
+  <ion-buttons class="footer-inner">
+    <ion-buttons class="footer-left" (click)="toggleHasModal(true)">
+      <div class="active-tract-info">
+        <div class="active-track-name three-dots-1">{{ activeSong.name }}</div>
+        <div class="active-track-author three-dots-1">{{ activeSong.artist }}</div>
+      </div>
+    </ion-buttons>
+    <ion-buttons class="footer-right">
+      <ion-icon name="play-skip-back-sharp" class="active-effect" (click)="prev()"></ion-icon>
+      <ion-icon [name]="player.playing() ? 'pause-sharp' : 'play-sharp'" class="active-effect" (click)="togglePlayer()">
+      </ion-icon>
+      <ion-icon name="play-skip-forward-sharp" class="active-effect" (click)="next()"></ion-icon>
+    </ion-buttons>
+  </ion-buttons>
+</ion-footer>

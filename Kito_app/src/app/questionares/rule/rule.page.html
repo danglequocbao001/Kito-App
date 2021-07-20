@@ -1,0 +1,22 @@
+<app-header class="header" [headerCustom]="headerCustom"></app-header>
+
+<ion-content>
+
+  <div class="rule-cover">
+    <ion-buttons *ngFor="let rule of rules">
+      <ion-label>{{rule.rule}}</ion-label>
+    </ion-buttons>
+    <img src="assets/img/questionares/support.gif" />
+  </div>
+  <div class="background-gif">
+    <div class="img-star1">
+      <img src="assets/img/questionares/star.gif" alt="" srcset="" />
+    </div>
+    <div class="img-star2">
+      <img src="assets/img/questionares/star2.gif" alt="" srcset="" />
+    </div>
+    <div class="img-star2">
+      <img src="assets/img/questionares/star.gif" alt="" srcset="" />
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,174 @@
+.text {
+  color: #525252;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+ion-content {
+  --padding-top: calc(80px + 45px);
+  --padding-start: 16px;
+  --padding-end: 16px;
+  ion-icon {
+    font-size: 26px;
+    padding: 5px 0;
+    color: #828282;
+    right: 16px;
+    top: 105px;
+    float: right;
+    z-index: 99;
+  }
+  .setting {
+    text-align: center;
+    min-width: 170px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: inline-block;
+    right: 16px;
+    background: #fff;
+    z-index: 99;
+    color: #424242;
+    position: absolute;
+    top: 160px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    ion-buttons {
+      padding: 4px 6px;
+      font-size: 16px; 
+    }
+    ion-label {
+      color: #828282;
+      line-height: 22px;
+    }
+    .active-color {
+      color: var(--main-color);
+    }
+  }
+
+
+}
+
+
+.current {
+  color: #424242;
+  font-weight: 500;
+  border: 1px solid #e5e5e5;
+  padding: 2px 10px;
+  background: #fbfbfb;
+  float: right;
+  border-radius: 10px;
+  margin-bottom: 13px;
+}
+
+.main-news {
+  position: relative;
+  display: -webkit-inline-box;
+  height: 60vw;
+  border-radius: 8px;
+  overflow: hidden;
+  border-bottom: 1px solid #eeeeee;
+
+  .item-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .text-box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(#424242, 0.5);
+    padding: 0px 6px 2px;
+    z-index: 1;
+    color: #fff;
+    justify-content: space-between;
+
+    .item-title {
+      font-size: 14px;
+      font-weight: 500;
+      margin: 0;
+      text-align: left;
+    }
+
+    .right-box {
+      flex-direction: column;
+      align-items: flex-end;
+      color: #fff;
+      ion-buttons {
+        ion-icon {
+          margin-right: 3px;
+          color: #ffffff;
+          width: 16px;
+        }
+      }
+      .time-box {
+        justify-content: flex-end;
+        min-width: 126px;
+      }
+    }
+  }
+}
+
+.sub-news {
+  padding-top: 10px;
+
+  .sub-news-item {
+    padding: 20px 10px;
+    align-items: stretch;
+    border-radius: 8px;
+    transition: 0.15s;
+
+    &:active {
+      background: rgb(240, 240, 240);
+    }
+
+    &:not(:first-child) {
+      border-top: 1px solid #eee;
+    }
+
+    .img-container {
+      width: 35%;
+      height: 75px;
+      border-radius: 5px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .content-box {
+      width: 65%;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-left: 10px;
+
+      .item-title {
+        color: #002d63;
+        font-size: 16px;
+        margin: 0;
+        text-align: left;
+      }
+
+      .bottom-box {
+        width: 100%;
+        justify-content: space-between;
+
+        ion-buttons {
+          .eye {
+            margin-right: 2px;
+            font-size: 16px;
+          }
+
+          .time {
+            margin-right: 2px;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}

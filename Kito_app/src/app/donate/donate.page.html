@@ -1,0 +1,60 @@
+<app-header [headerCustom]="headerCustom"></app-header>
+<ion-content class="ion-padding">
+  <form [formGroup]="frmDonate" (ngSubmit)="onSubmit()">
+    <ion-item-group class="wrapper">
+      <ion-item-group class="title">
+        <span class="header__name">{{getData?.name}}</span>
+        <ion-item-group class="header__group-address">
+          <img src="assets/img/address.svg" alt="" />
+          <span
+            class="header__address"
+            (click)="goToMap(getData.location.lat, getData.location.long)"
+          >
+            {{getData?.address}}
+          </span>
+        </ion-item-group>
+        <div [style.background]="getUrl()" class="bg"></div>
+        <ion-item-group class="header__group-address mr-top">
+          <img src="assets/img/user_img.svg" alt="" />
+          <span class="header__title-user">
+            {{level}} mục {{bishop_name}}
+          </span>
+        </ion-item-group>
+      </ion-item-group>
+      <ion-item-group class="group__donate">
+        <ion-label>Nhập số tiền đóng góp:</ion-label>
+        <ion-item-group>
+          <ion-img src="assets/img/dola.svg"></ion-img>
+          <input
+            formControlName="amount"
+            class="group__donate-amount"
+            (keyup)="callChangeDot()"
+            [(ngModel)]="x"
+          />VND
+        </ion-item-group>
+        <span class="require" *ngIf="required_mess"> {{message}} </span>
+        <ion-item-group class="group__purpose">
+          <ion-label class="group__purpose-label">Mục đích:</ion-label>
+          <textarea
+            placeholder="Ghi chú thêm thông tin..."
+            formControlName="note"
+          ></textarea>
+        </ion-item-group>
+      </ion-item-group>
+      <ion-label (click)="goToDioceses()" class="donate__other"
+        >Đóng góp giáo xứ khác?</ion-label>
+    </ion-item-group>
+  <ion-item-group class="footer">
+    <ion-buttons>
+      <ion-avatar>
+        <img src="{{avatar}}" />
+      </ion-avatar>
+      <ion-label>{{name}} </ion-label>
+    </ion-buttons> 
+    <ion-button type="submit" [disabled]="frmDonate.invalid">
+      Xác nhận
+    </ion-button>
+  </ion-item-group>
+</form>
+
+</ion-content>

@@ -1,0 +1,180 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<!-- <ion-content [ngClass]="{'disable-scroll': !songs.length}"> -->
+<ion-content [ngClass]="{'disable-scroll': !songs.length}">
+
+  <app-search-bar-nav class="search-music" (output)="search($event)"></app-search-bar-nav>
+  <ion-img class="filler-icon" (click)="clickFiller()" src="./assets/img/music/filler.svg"></ion-img>
+  <ion-segment (ionChange)="changedSegment($event)" value="all" swipeGesture="false" mode="ios">
+    <ion-segment-button value="all" class="intro">
+      <ion-label>TẤT CẢ</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="like" class="biography">
+      <ion-label>YÊU THÍCH</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- <ion-list class="song-list" [ngClass]="{'display-none': segmentValue != 'all'}">
+    <ng-container *ngFor="let song of songs; index as i">
+      <ion-buttons class="song-cover" [ngClass]="{'active-song-cover': checkActiveSong(song)}" (click)="start(song)">
+        <ion-buttons class="left-box">
+          <ion-icon size="large" name="musical-notes-outline" style="margin-right: 5px"></ion-icon>
+          <ion-label class="song-name">{{ song.name }}</ion-label>
+        </ion-buttons>
+        <ion-buttons class="right-box">
+          <ion-label class="author">{{ song.artist }}</ion-label>
+          <ion-icon size="large" [name]="song.favourite ? 'heart': 'heart-outline'"
+            [ngClass]="{'liked': song.favourite}" style="margin-left: 5px" (click)="toggleLike(song)">
+          </ion-icon>
+        </ion-buttons>
+      </ion-buttons>
+    </ng-container>
+  </ion-list> -->
+  <ion-list *ngIf="segmentValue=='all'">
+    <div class="list-songs" *ngFor="let i of songs">
+      <ion-buttons [ngClass]="{'active-song-css': checkActiveSong(i)}" (click)="start(i)" class="song-flex">
+        <ion-buttons class="name-music">
+          <ion-icon class="icon-music" size="large" name="musical-notes-outline" style="margin-right: 5px"></ion-icon>
+          <p class="item-title three-dots-2">{{ i.name }}</p>
+        </ion-buttons>
+        <ion-buttons class="item-artist">
+          <p class="three-dots-2">{{ i.artist }}</p>
+          <ion-icon class="icon-heart" size="large" [name]="i.favourite ? 'heart': 'heart-outline'"
+            [ngClass]="{'liked': i.favourite}" style="margin-left: 5px" (click)="toggleLike(i)">
+          </ion-icon>
+        </ion-buttons>
+
+      </ion-buttons>
+    </div>
+
+    <ion-infinite-scroll #infiniteScrollSongs (ionInfinite)="loadMoreSongs($event)" threshold="100px">
+      <ion-infinite-scroll-content loadingSpinner="lines"></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-list>
+  <ion-list *ngIf="!songs.length && notFound && segmentValue == 'all'" class="not-found">
+    Không tìm thấy
+  </ion-list>
+
+
+  <!-- <ion-list class="song-list" [ngClass]="{'display-none': segmentValue != 'like'}">
+    <ng-container *ngFor="let song of favoriteSongs">
+      <ion-buttons class="song-cover" [ngClass]="{'active-song-cover': checkActiveSong(song)}" (click)="start(song)">
+        <ion-buttons class="left-box">
+          <ion-icon size="large" name="musical-notes-outline" style="margin-right: 5px"></ion-icon>
+          <ion-label class="song-name">{{ song.name }}</ion-label>
+        </ion-buttons>
+
+        <ion-buttons class="right-box">
+          <ion-label class="author">{{ song.artist }}</ion-label>
+          <ion-icon size="large" name="heart" class="liked" style="margin-left: 5px" (click)="toggleLike(song)">
+          </ion-icon>
+        </ion-buttons>
+      </ion-buttons>
+    </ng-container>
+  </ion-list> -->
+  <div *ngIf="segmentValue =='like'">
+    <div class="list-songs" *ngFor="let i of favoriteSongs">
+      <ion-buttons (click)="start(i)" class="song-flex">
+        <ion-buttons class="name-music">
+          <ion-icon class="icon-music" size="large" name="musical-notes-outline" style="margin-right: 5px"></ion-icon>
+          <p class="item-title three-dots-2">{{ i.name }}</p>
+        </ion-buttons>
+        <ion-buttons class="item-artist">
+          <p class="three-dots-2">{{ i.artist }}</p>
+          <ion-icon size="large" name="heart" class="liked" style="margin-left: 5px" (click)="toggleLike(song)">
+
+          </ion-icon>
+        </ion-buttons>
+
+      </ion-buttons>
+    </div>
+
+  </div>
+  <ion-list *ngIf="!favoriteSongs.length && notFoundSong && segmentValue == 'like'" class="not-found">
+    Không tìm thấy
+  </ion-list>
+  <ion-infinite-scroll *ngIf="segmentValue == 'like'" #infiniteScrollFaveolate
+    (ionInfinite)="loadMoreSongsFavorite($event)" threshold="100px">
+    <ion-infinite-scroll-content loadingSpinner="lines"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <!-- <ion-infinite-scroll #infiniteScrollSongs (ionInfinite)="loadMoreSongs($event)" threshold="100px">
+    <ion-infinite-scroll-content loadingSpinner="lines"></ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+
+</ion-content>
+
+<ion-footer *ngIf="activeSong" class="ion-no-border">
+  <ion-buttons style="padding: 0 13px 0 5px;">
+    <ion-range class="range" mode="md" #range [(ngModel)]="progress" max="100" (touchend)="seek()" (mouseup)="seek()">
+    </ion-range>
+    <ion-buttons class="duration-box">
+      <span>{{ secondsToHms(player.seek())}}</span>
+      /
+      <span>{{ secondsToHms(player.duration()) }}</span>
+    </ion-buttons>
+  </ion-buttons>
+  <ion-buttons class="footer-inner">
+    <ion-buttons class="footer-left" (click)="toggleHasModal(true)">
+      <div class="active-tract-info">
+        <div class="active-track-name three-dots-1">{{ activeSong.name }}</div>
+        <div class="active-track-author three-dots-1">{{ activeSong.artist }}</div>
+      </div>
+    </ion-buttons>
+    <ion-buttons class="footer-right">
+      <ion-icon name="play-skip-back-sharp" class="active-effect" (click)="prev()"></ion-icon>
+      <ion-icon [name]="player.playing() ? 'pause-sharp' : 'play-sharp'" class="active-effect" (click)="togglePlayer()">
+      </ion-icon>
+      <ion-icon name="play-skip-forward-sharp" class="active-effect" (click)="next()"></ion-icon>
+    </ion-buttons>
+  </ion-buttons>
+</ion-footer>
+
+<ion-buttons class="modal" *ngIf="activeSong" [ngClass]="{'has-modal': hasModal}">
+  <div class="modal-fixed">
+    <div class="modal-header">
+      <ion-icon name="chevron-back-outline" class="back-btn back-btn-custom" (click)="toggleHasModal(false)"></ion-icon>
+    </div>
+    <div class="name">{{ activeSong.name }}</div>
+    <div class="author">{{ activeSong.artist }}</div>
+    <ion-avatar class="avatar">
+      <img onerror="this.src='assets/img/logo/logo.jpg'" [src]="activeSong.thumb_image?.url" />
+    </ion-avatar>
+  </div>
+
+  <div #contentLyric class="modal-content">
+    <div class="lyrics" *ngIf="activeLyric != null">
+      <div id="content-lyric" [innerHTML]="activeLyric">
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <ion-buttons style="padding: 0 13px 0 5px;">
+      <ion-range class="range" mode="md" #range [(ngModel)]="progress" max="100" (touchend)="seek()" (mouseup)="seek()">
+      </ion-range>
+      <ion-buttons class="duration-box">
+        <span>{{ secondsToHms(player.seek())}}</span>
+        /
+        <span>{{ secondsToHms(player.duration()) }}</span>
+      </ion-buttons>
+    </ion-buttons>
+    <ion-buttons class="btns">
+      <ion-icon name="shuffle-outline" class="active-effect" [ngClass]="{'active-btn': mixed}" (click)="toggleMixed()">
+      </ion-icon>
+      <ion-buttons class="btns-center">
+        <ion-icon name="play-skip-back-sharp" class="active-effect" (click)="prev()"></ion-icon>
+        <ion-icon [name]="player.playing() ? 'pause-sharp' : 'play-sharp'" class="active-effect"
+          (click)="togglePlayer()"></ion-icon>
+        <ion-icon name="play-skip-forward-sharp" class="active-effect" (click)="next()"></ion-icon>
+      </ion-buttons>
+      <div class="repeating-box">
+        <ion-icon name="repeat-outline" class="active-effect"
+          [ngClass]="{'active-btn': this.repeatingType !== this.REPEATING_TYPE.NONE}" (click)="changeRepeatingType()">
+        </ion-icon>
+        <ion-buttons *ngIf="this.repeatingType === this.REPEATING_TYPE.REPEAT_ONE" class="repeating-one">1</ion-buttons>
+      </div>
+    </ion-buttons>
+  </div>
+</ion-buttons>

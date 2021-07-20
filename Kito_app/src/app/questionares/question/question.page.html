@@ -1,0 +1,109 @@
+<ion-content class="ion-padding" *ngIf="questions.length > 0">
+  <!-- <ion-label style="color: white">right for test: {{ questions[this.questionCounter].answer.right_answer }}</ion-label> -->
+  <ion-buttons class="header-option">
+    <ion-icon size="large" mode="ios" name="list-circle-outline" class="active-effect" (click)="questionSetting()">
+    </ion-icon>
+    <ion-icon size="large" name="volume-high" [name]="musicType ? 'volume-high': 'volume-mute'" class="active-effect"
+      (click)="setMusicType()"></ion-icon>
+  </ion-buttons>
+  <ion-buttons class="header-notify">
+    <ion-buttons class="heart active-effect" lines="none">
+      <ion-icon size="large" name="heart-circle-outline"></ion-icon>
+      <ion-label class="text-heart">{{ heart }}</ion-label>
+    </ion-buttons>
+    <!-- <ion-buttons class="middle" lines="none">
+      <ion-col>
+        <ion-row>
+          <ion-label class="question-type">{{ questionTypeName }}</ion-label>
+        </ion-row>
+      </ion-col>
+    </ion-buttons> -->
+    <ion-icon class="rule active-effect" size="large" name="help-circle-outline" (click)="toggleHasModal(true)">
+    </ion-icon>
+  </ion-buttons>
+  <ion-buttons class="time-and-score">
+    <ion-label>Điểm: {{score}}</ion-label>
+    <ion-buttons>
+      <ion-icon name="hourglass-outline"></ion-icon>
+      <ion-label>{{ timer }}s</ion-label>
+    </ion-buttons>
+  </ion-buttons>
+  <ion-buttons class="question-cover">
+    <!-- <p class="question-counter">{{ questionCounter+1 }}/{{questionsLength}} câu</p> -->
+    <ion-label class="question" *ngIf="questions[questionCounter].question != '' ">{{
+      questions[questionCounter].question }}</ion-label>
+  </ion-buttons>
+  <ion-buttons class="question-img-cover">
+    <img class="question-img" *ngIf="questions[questionCounter].thumb_image.url != null "
+      src="{{ questions[questionCounter].thumb_image.url }}" />
+  </ion-buttons>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-buttons mode="ios" class="answer active-effect" id="answer" shape="round" Fill="outline"
+          (click)="btnActivate($event)" (click)="checkAnswerValue(questions[questionCounter].answer.a)"
+          (click)="checkAnswerKey(questions[questionCounter].answer, answerValue)">{{
+          questions[questionCounter].answer.a }}
+        </ion-buttons>
+
+        <ion-buttons mode="ios" class="answer active-effect" id="answer" shape="round" Fill="outline"
+          (click)="btnActivate($event)" (click)="checkAnswerValue(questions[questionCounter].answer.b)"
+          (click)="checkAnswerKey(questions[questionCounter].answer, answerValue)">{{
+          questions[questionCounter].answer.b }}
+        </ion-buttons>
+
+        <ion-buttons mode="ios" class="answer active-effect" id="answer" shape="round" Fill="outline"
+          (click)="btnActivate($event)" (click)="checkAnswerValue(questions[questionCounter].answer.c)"
+          (click)="checkAnswerKey(questions[questionCounter].answer, answerValue)">{{
+          questions[questionCounter].answer.c }}
+        </ion-buttons>
+
+        <ion-buttons mode="ios" class="answer active-effect" id="answer" shape="round" Fill="outline"
+          (click)="btnActivate($event)" (click)="checkAnswerValue(questions[questionCounter].answer.d)"
+          (click)="checkAnswerKey(questions[questionCounter].answer, answerValue)">{{
+          questions[questionCounter].answer.d }}
+        </ion-buttons>
+
+        <ion-button mode="ios" class="confirm-btn active-effect" id="confirm" [disabled]="answerValue==''"
+          (click)="btnConfirm()" (click)="btnActivate($event)">Đồng ý</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="background-gif">
+    <div class="img-star2">
+      <img src="assets/img/questionares/star2.gif" alt="" srcset="" />
+    </div>
+    <div class="img-star4">
+      <img src="assets/img/questionares/star2.gif" alt="" srcset="" />
+    </div>
+  </div>
+</ion-content>
+
+<ion-buttons class="modal" *ngIf="hasModal" [ngClass]="{'has-modal': hasModal}">
+  <div class="modal-fixed">
+    <div class="modal-header">
+      <ion-icon name="chevron-back-outline" class="back-btn back-btn-custom" (click)="toggleHasModal(false)"></ion-icon>
+    </div>
+  </div>
+
+  <ion-label class="rule-label">Luật chơi</ion-label>
+
+  <div class="ion-content">
+    <ion-buttons *ngFor="let rule of rules">
+      <ion-label class="rule-content">{{rule.rule}}</ion-label>
+    </ion-buttons>
+    <ion-img src="../../assets/img/questionares/support.gif"></ion-img>
+  </div>
+  <div class="background-gif">
+    <div class="img-star1">
+      <img src="assets/img/questionares/star.gif" alt="" srcset="" />
+    </div>
+    <div class="img-star1">
+      <img src="assets/img/questionares/star2.gif" alt="" srcset="" />
+    </div>
+    <div class="img-star2">
+      <img src="assets/img/questionares/star.gif" alt="" srcset="" />
+    </div>
+  </div>
+</ion-buttons>

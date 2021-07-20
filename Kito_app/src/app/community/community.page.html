@@ -1,0 +1,76 @@
+<app-header  [headerCustom]="headerCustom"></app-header>
+
+<ion-content>
+  <div class="post" *ngFor="let post of posts">
+    <div class="author"(click)= "clickOutSideComment()">
+      <img class="avatar" [src]="post.owner.thumb_image.url"/>
+      <div class="text">
+        <ion-text class="username" >{{post.owner.full_name}}</ion-text>
+        <ion-text class="datetime">
+          <img src="assets/icon/time.svg"/>
+          {{post.posted_at}}</ion-text>
+      </div>
+    </div>
+    <div class="content"(click)= "clickOutSideComment()">
+      <ion-text [innerHTML]="post.content" [ngClass]="{'text-content': post.showAll}" class="three-dots-3"></ion-text>
+      <ion-text (click)="showMore(post)" class="show-all" *ngIf="!post.showAll" >Xem thêm</ion-text>
+      <ion-text (click)="showLess(post)" class="show-all" *ngIf="post.showAll" >Thu gọn</ion-text>
+
+    </div>
+
+    <ion-slides pager="true" [options]="slideOpts" *ngIf="post.photos">
+      <ion-slide *ngFor="let image of post.photos">
+        <ion-img class="image" *ngIf="post.photos.length > 0" [src]="image.url"></ion-img>
+      </ion-slide>
+    </ion-slides>
+    <div class="button">
+      <div class="like-button" (click)= "clickOutSideComment()">
+        <div class="name-icon">
+          <!-- <img src="../../assets/icon/like.svg" *ngIf="!post.liked"/>
+          <img src="../../assets/icon/liked.svg" *ngIf="post.liked"/> -->
+          <img [src] = "post.nameIcon" alt=""   (click)="likeToogle(post)">
+          <ion-text>Thích</ion-text>
+        </div>
+        <ion-text class="sub-text">{{post.likes_count}} lượt thích</ion-text>
+      </div>
+      
+      <div class="like-button">
+        <div class="name-icon" (click)="comment(post.id)">
+          <img src="../../assets/icon/comment.svg"/>
+          <ion-text>Bình luận</ion-text>
+        </div>
+        <ion-text class="sub-text">{{post.comments_count}} Bình luận</ion-text>
+      </div>
+      <div class="like-button" (click)= "clickOutSideComment()">
+        <div class="name-icon" (click)="Share()" >
+          <img src="../../assets/icon/share.svg"/>
+          <ion-text>Chia sẻ</ion-text>
+        </div>
+        <ion-text class="sub-text">{{post.comments_count}} Chia sẻ</ion-text>
+      </div>
+    </div>
+    <div class="allcomment" >
+      <ion-text class="subtext" (click)="showcomment(post.id)" *ngIf="post.comments_count>3">Xem thêm các bình luận trước...</ion-text>
+      <div class="comment" *ngFor="let comment of post.comments">
+        <img class="avatar" [src]="comment.app_user.thumb_image.url"/>
+        <div class="text">
+          <ion-text class="username">{{comment.app_user.full_name}}</ion-text>
+          <ion-text class="ion-no-margin content">{{comment.content}}</ion-text>
+          <div class="time-and-reply">
+            <ion-text class="time">{{comment.posted_at}}</ion-text>
+            <ion-text (click)="replyComment(post.id,comment.id)">trả lời</ion-text>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</ion-content>
+<ion-footer *ngIf="clickComment">
+  <ion-toolbar class="tool" >
+    <ion-row>
+      <ion-input placeholder="Nhập bình luận..." [(ngModel)]="commentContent"></ion-input>
+      <ion-img src="../../assets/icon/photo.svg" (click)="loadImg()"></ion-img>
+      <ion-img src="../../assets/icon/send.svg" (click)="sendComment()"></ion-img>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

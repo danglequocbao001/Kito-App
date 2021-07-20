@@ -1,0 +1,27 @@
+<ion-content>
+  <ion-img class="main-img" src="{{ imgUrl }}"></ion-img>
+  <ion-label class="main-title">{{ title }}</ion-label>
+  <ion-buttons class="cup-and-scores">
+    <!-- <ion-icon name="trophy"></ion-icon> -->
+    <ion-label>{{ score }}/{{questionsLength}} </ion-label>
+  </ion-buttons>
+  <div style="position: relative; z-index: 5;">
+    <ion-button mode="ios" (click)="closeCompleteQuestion(button.routerLink)" Fill="round" class="active-effect" *ngFor="let button of buttons">{{ button.name }}</ion-button>
+  </div>
+
+  <div class="background-gif">
+    <div class="img-star2">
+      <img src="assets/img/questionares/star2.gif" alt="" srcset="" />
+    </div>
+    <div class="img-star4">
+      <img src="assets/img/questionares/star2.gif" alt="" srcset="" />
+    </div>
+    <div class="img-star3">
+      <img src="assets/img/questionares/bubble.gif" alt="" srcset="" />
+    </div>
+    <div class="img-star4">
+      <img src="assets/img/questionares/bubble.gif" alt="" srcset="" />
+    </div>
+  </div>
+  
+</ion-content>

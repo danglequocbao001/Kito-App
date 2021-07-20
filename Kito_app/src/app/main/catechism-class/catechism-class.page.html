@@ -1,0 +1,14 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content>
+  <div class="catechism main-box-shadow active-effect" *ngFor="let catechism of catechismList"
+    (click)="goToCatechismDetail(catechism)">
+    <ion-buttons class="catechism-name">
+      <ion-label>{{ catechism.name }}</ion-label>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-buttons>
+    <img class="catechism-img" [src]="catechism.thumbImage" alt="">
+  </div>
+</ion-content>

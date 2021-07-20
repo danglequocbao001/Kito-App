@@ -1,0 +1,26 @@
+<ion-content class="ion-padding">
+  <div class="item-filler">
+    <p class="title-text">Lọc theo</p>
+    <ul class="list-item">
+      <li *ngFor="let item of listFiller" (click)="selectFiller(item)" class="item">
+        <ion-img class="icon-item" [src]="item.icon"></ion-img>
+        <ion-label>
+          {{item.name}}
+        </ion-label>
+        <ion-img *ngIf="item.id == activeFiller" class="icon-tick" src="assets/img/music/tick.svg"></ion-img>
+      </li>
+    </ul>
+  </div>
+  <div class="item-filler">
+    <p class="title-text">Sắp xếp theo</p>
+    <ul class="list-item">
+      <li *ngFor="let item of listSort" (click)="selectSort(item)" class="item">
+        <ion-img class="icon-item" [src]="item.icon"></ion-img>
+        <ion-label>
+          {{item.name}}
+        </ion-label>
+        <ion-img *ngIf="item.id == activeSort" class="icon-tick" src="assets/img/music/tick.svg"></ion-img>
+      </li>
+    </ul>
+  </div>
+</ion-content>

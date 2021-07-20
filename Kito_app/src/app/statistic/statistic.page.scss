@@ -1,0 +1,245 @@
+ion-content {
+  --padding-top: calc(80px + 40px + 30px);
+  --background: #fff;
+}
+
+.fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: calc(80px);
+  background: #fff;
+  z-index: 10;
+}
+
+.years {
+  text-align: right;
+
+  .selected-year-box {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 137px;
+    height: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 0 10px;
+    margin: 0 10px 10px 0;
+    position: relative;
+
+    .selected-year {
+      color: #424242;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .triangle {
+      border-width: 8px;
+      border-color: #424242 transparent transparent transparent;
+      border-style: solid;
+      transform: translateY(30%);
+    }
+
+    .year-options {
+      position: absolute;
+      top: -1px;
+      right: 0;
+      width: 142px;
+      max-height: 137px;
+      overflow-y: auto;
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+
+      .year-option {
+        font-size: 18px;
+        color: #828282;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        transition: 0.15s;
+        background: #ffffff;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid #e0e0e0;
+        }
+
+        &:active {
+          background: #dbdbdb;
+        }
+      }
+
+      .selected-year-option {
+        background: #e4e4e4;
+      }
+    }
+  }
+}
+
+.segment-container {
+  height: 30px;
+  padding: 0 16px;
+  border-bottom: 1px solid #dcdcdc;
+
+  .segment {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+
+    &__item {
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      padding: 3px;
+      color: #828282;
+      font-size: 14px;
+      text-transform: uppercase;
+
+      &:not(:first-child) {
+        margin-left: 10px;
+      }
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+
+    &__item--selected {
+      border-bottom: 2px solid #f6c33e;
+      font-weight: 700;
+    }
+  }
+}
+
+ion-slides {
+  ion-slide {
+    flex-direction: column;
+  }
+}
+
+.top-box {
+  width: 100%;
+  padding: 30px 20px;
+
+  .top-box-header {
+    justify-content: space-between;
+    color: #424242;
+    margin-bottom: 10px;
+
+    .top-box-header-label {
+      font-size: 18px;
+    }
+
+    .top-box-header-content {
+      font-size: 24px;
+      font-weight: 700;
+    }
+  }
+
+  .top-box-body {
+    background: #f6c33e;
+    color: #fff;
+    border: 0.25px solid #bbbbbb;
+    box-shadow: inset 0px 2px 4px rgba(61, 61, 61, 0.25);
+    border-radius: 10px;
+    font-size: 14px;
+
+    .bar {
+      padding: 20px;
+
+      &:last-child {
+        padding-top: 0;
+      }
+
+      .bar-header {
+        justify-content: space-between;
+        margin-bottom: 5px;
+        padding: 0 5px;
+
+        .bar-header-content {
+          font-weight: 700;
+        }
+      }
+
+      .bar-body {
+        height: 12px;
+        border-radius: 10px;
+        --buffer-background: #fbe7b5;
+        --progress-background: #fff;
+      }
+    }
+  }
+}
+
+.bottom-box {
+  background: #f8f8f8;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  width: 100%;
+
+  .bottom-box-header {
+    padding: 15px 10px;
+    color: #424242;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 3px solid #fff;
+  }
+
+  .bottom-box-body {
+    .bottom-box-body-label {
+      color: #767575;
+      font-size: 18px;
+      font-weight: 700;
+      margin-top: 10px;
+
+      div {
+        width: calc(100% / 7);
+      }
+    }
+
+    .bottom-box-body-content {
+      flex-wrap: wrap;
+
+      div {
+        width: calc(100% / 7);
+
+        ion-buttons {
+          background: #f4f4f4;
+          justify-content: center;
+          color: #828282;
+          font-size: 18px;
+          border-radius: 100%;
+          height: 45px;
+          width: 45px;
+          margin: 12px auto 3px;
+
+          @media screen and (max-width: 320px) {
+            height: 40px;
+            width: 40px;
+          }
+        }
+
+        .joined-date {
+          background: #f7c951;
+          color: #fff;
+        }
+      }
+    }
+
+    .bottom-box-body-note {
+      color: #828282;
+      font-size: 14px;
+      justify-content: flex-end;
+      padding: 10px 20px;
+
+      .circle {
+        background: #f7c951;
+        width: 17px;
+        height: 17px;
+        border-radius: 100%;
+        margin-right: 8px;
+      }
+    }
+  }
+}

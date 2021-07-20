@@ -1,0 +1,38 @@
+ion-content {
+  --padding-top: calc(80px + 45px);
+  --background: #fff;
+}
+
+.item {
+  padding: 10px 16px;
+    border-radius: 10px;
+  align-items: flex-start;
+  transition: .25s;
+
+  &:active {
+    background: rgb(231, 231, 231);
+  }
+
+  .img-box {
+    width: 40%;
+    height: 30vw;
+  }
+
+  .text-box {
+    width: 60%;
+    margin-left: 12px;
+
+    .title {
+      font-weight: 500;
+      font-size: 14px;
+      color: #002d63;
+      margin-bottom: 6px;
+    }
+
+    .content {
+      font-size: 14px;
+      line-height: 16px;
+      color: #8b8b8b;
+    }
+  }
+}

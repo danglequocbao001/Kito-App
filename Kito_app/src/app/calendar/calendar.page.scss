@@ -1,0 +1,183 @@
+ion-content {
+    --padding-top: 80px;
+
+    .d-flex {
+        display: block;
+    }
+
+    .calendar {
+        border-bottom: 2px solid #c8c8c8;
+        padding: 0 10px;
+        .title {
+            display: flex;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
+            ion-icon {
+                font-size: 24px;
+            }
+            .ion-left {
+                margin-right: 16px;
+            }
+            .ion-right {
+                margin-left: 16px;
+            }
+        }
+        .month-year {
+            text-align: center;
+            color: var(--color-gray42);
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .wapper-group-day {
+            padding-bottom: 26px;
+            .group-date {
+                display: flex;
+                flex-wrap: wrap;
+                .group-date-btn {
+                    height: 30px !important;
+                    border: none;
+                    display: flex;
+                    justify-content: center;
+                }
+                .date-btn + .date-btn {
+                    border-right: 1px solid #c8c8c8 ;
+                    border-bottom: 1px solid #c8c8c8 ;
+
+                }
+                .date-btn {
+                    &:first-child {
+                        border-right: 1px solid #c8c8c8 ;
+                        border-bottom: 1px solid #c8c8c8 ;
+                    }
+                    &:nth-child(7n){
+                        border-right: 0 !important;
+                    }
+                }
+                ion-buttons {
+                    width: 14.28%;
+                    display: block;
+                    font-size: 16px;
+                    height: 55px;
+                    position: relative;
+                   
+                    .date {
+                        position: inherit;
+                      top: 2px !important;
+                      left: 2px !important;
+                    }
+                    .day {
+                        color: var(--gray82);
+                        font-weight: 100;
+                       
+                    }
+                    .lunar_date {
+                        position: absolute;
+                        bottom: 2px;
+                        color: #828282;
+                        font-size: 14px;
+                        font-weight: 100;
+                        right: 2px;
+
+                    }
+                    ion-text {
+                        color: #424242;
+                        font-size: 16px;
+                        font-weight: 500;
+
+                    }
+                }
+
+            }
+            .group-border {
+            border: 1px solid #C8C8C8;
+                .group-date {
+                    display: flex;
+                    flex-wrap: wrap;
+                    .group-date-btn {
+                        height: 30px !important;
+                        border: none;
+                        display: flex;
+                        justify-content: center;
+                    }
+                    ion-buttons {
+                        width: 14.28%;
+                        display: block;
+                        font-size: 16px;
+                        height: 55px;
+                        position: relative;
+                        .date {
+                            position: inherit;
+                          top: 2px !important;
+                          left: 2px !important;
+                        }
+                        .day {
+                            color: var(--gray82);
+                           
+                        }
+                        .lunar_date {
+                            position: absolute;
+                            bottom: 2px;
+                            color: #828282;
+                            font-size: 14px;
+                            font-weight: 100;
+                            right: 2px;
+    
+                        }
+                        ion-text {
+                            color: #424242;
+                            font-size: 16px;
+                            font-weight: 500;
+    
+                        }
+                    }
+    
+                }
+            }
+           
+        }
+
+        .day {}
+    }
+    .event {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        &:before {
+            background-image: url("../../assets/img/calendar/giadinhthanhgia.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            content: " ";
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+          }
+        
+        .title-event {
+            color: #CC9D3E;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        ion-list {
+            background-color: transparent;
+            ion-item {
+                --background: transparent;
+               margin-bottom: 12px;
+                .mass-date {
+                    color: #424242;
+                    margin-right: 16px;
+                    font-weight: 550;
+                }
+                ion-text {
+                }
+            }
+        }
+    
+    }
+}

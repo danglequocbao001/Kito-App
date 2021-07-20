@@ -1,0 +1,16 @@
+<app-header  [headerCustom]="headerCustom"></app-header>
+<ion-content>
+    <div class="allcomment">
+        <div class="comment" *ngFor="let comment of commentData">
+            <img class="avatar" [src]="comment.app_user.thumb_image.url"/>
+            <div class="text">
+            <ion-text class="username">{{comment.app_user.full_name}}</ion-text>
+            <ion-text class="ion-no-margin content">{{comment.content}}</ion-text>
+            <div class="time-and-reply">
+                <ion-text class="time">{{comment.posted_at}}</ion-text>
+                <ion-text (click)="replyComment(comment.id)">trả lời</ion-text>
+            </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,81 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content [ngClass]="{ 'ion-content-activated': activatedInput}">
+  <div class="user">
+    <div class="user-img-container active-effect" (click)="avatarSetting()">
+      <ion-avatar class="user-img main-box-shadow">
+          <img [src] ="avatar" alt="" *ngIf="avatar">
+          <img src="https://i.imgur.com/edwXSJa.png" alt=""*ngIf="!avatar" >
+          <ion-spinner *ngIf="!avatar" class="absolute-center" name="lines"></ion-spinner>
+      </ion-avatar>
+      <ion-icon class="icon-edit" name="camera"></ion-icon>
+    </div>
+    <ion-label *ngIf="loadedData && !activatedInput" class="edit-btn" (click)="activateInput()">Chỉnh sửa</ion-label>
+  </div>
+
+  <ion-list class="list">
+    <ion-backdrop *ngIf="!loadedData" class="backdrop-list"></ion-backdrop>
+
+    <form [formGroup]="form" (ngSubmit)="updateInfo()">
+      <div class="item">
+        <ion-label class="item-label">Họ tên</ion-label>
+        <ion-input class="item-content" maxlength="30" [readonly]="!activatedInput"
+          [ngClass]="{ 'item-content-activated': activatedInput}" formControlName="full_name"></ion-input>
+        <ng-container *ngFor="let validation of validationMessages.full_name">
+          <div class="error-message"
+            *ngIf="form.get('full_name').hasError(validation.type) && (form.get('full_name').dirty || form.get('full_name').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <div class="item">
+        <ion-label class="item-label">Năm sinh</ion-label>
+        <ion-datetime class="item-content" [readonly]="!activatedInput" [ngClass]="{ 'item-content-activated': activatedInput}"
+          formControlName="birthday" displayFormat="YYYY" min="1900" max="2021"></ion-datetime>
+      </div>
+      <div class="item">
+        <ion-label class="item-label">Số điện thoại</ion-label>
+        <ion-input autocomplete="off" type="text" class="item-content" [readonly]="!activatedInput"
+          [ngClass]="{ 'item-content-activated': activatedInput}" formControlName="phone_number"></ion-input>
+        <ng-container *ngFor="let validation of validationMessages.phone_number">
+          <div class="error-message"
+            *ngIf="form.get('phone_number').hasError(validation.type) && (form.get('phone_number').dirty || form.get('phone_number').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <div class="item">
+        <ion-label class="item-label">Email</ion-label>
+        <ion-input autocomplete="off" type="text" class="item-content" [readonly]="!activatedInput"
+          [ngClass]="{ 'item-content-activated': activatedInput}" formControlName="email"></ion-input>
+        <ng-container *ngFor="let validation of validationMessages.email">
+          <div class="error-message"
+            *ngIf="form.get('email').hasError(validation.type) && (form.get('email').dirty || form.get('email').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <!-- <div class="item">
+        <ion-label class="item-label">Address</ion-label>
+        <ion-input class="item-content" [readonly]="!activatedInput" auto-grow="true"
+          [ngClass]="{ 'item-content-activated': activatedInput}" formControlName="full_address"></ion-input>
+        <ng-container *ngFor="let validation of validationMessages.full_address">
+          <div class="error-message"
+            *ngIf="form.get('full_address').hasError(validation.type) && (form.get('full_address').dirty || form.get('full_address').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div> -->
+    </form>
+    <ion-label *ngIf="!activatedInput" class="change__password" (click)="openModalPassword()">
+      Đổi mật khẩu
+    </ion-label>
+  </ion-list>
+  <ion-buttons class="footer" *ngIf="activatedInput">
+    <ion-button class="btn btn-cancel" (click)="deactivateInput()">Hủy</ion-button>
+    <ion-button class="btn btn-update-disabled" [ngClass]="{'btn-update': canUpdate()}" (click)="updateInfo()"
+      [disabled]="!canUpdate()">Cập nhật</ion-button>
+  </ion-buttons>
+</ion-content>

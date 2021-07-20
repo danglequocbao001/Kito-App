@@ -1,0 +1,17 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content [ngClass]="{'disable-scroll': !list.length}">
+  <app-search-bar-nav></app-search-bar-nav>
+
+  <ion-buttons class="list">
+    <ion-buttons class="item active-effect" *ngFor="let item of list" (click)="alertChooseStore(item)">
+      <span class="text">Giáo xứ<br>{{ item.name }}</span>
+    </ion-buttons>
+  </ion-buttons>
+
+  <ion-infinite-scroll #infiniteScroll (ionInfinite)="loadMoreData($event)">
+    <ion-infinite-scroll-content loadingSpinner="lines"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

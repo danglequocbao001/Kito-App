@@ -1,0 +1,93 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content>
+  <div class="body">
+    <div class="user" routerLink="/account">
+      <div class="user-img-container active-effect">
+        <ion-avatar class="user-img main-box-shadow">
+          <img [src]="avatar" alt="" *ngIf="avatar" />
+          <img src="https://i.imgur.com/edwXSJa.png" alt="" *ngIf="!avatar" />
+          <ion-spinner
+            *ngIf="!avatar"
+            class="absolute-center"
+            name="lines"
+          ></ion-spinner>
+        </ion-avatar>
+      </div>
+      <ion-label class="user-name three-dots-2">{{ name }}</ion-label>
+    </div>
+    <ion-list class="settings">
+      <ion-buttons class="setting" routerLink="/account">
+        <div class="img-container">
+          <ion-icon size="normal" name="person"></ion-icon>
+        </div>
+        <ion-label class="title">Thông tin cá nhân</ion-label>
+      </ion-buttons>
+      <ion-buttons class="setting" routerLink="/account-setting/my-parish">
+        <div class="img-container">
+          <img src="assets/img/my-parish.svg" alt="" />
+        </div>
+        <ion-label class="title">Thông tin giáo xứ</ion-label>
+      </ion-buttons>
+      <!-- <ion-buttons class="setting" routerLink="/account-setting/notification">
+        <div class="img-container">
+          <ion-buttons>
+            3
+          </ion-buttons>
+          <ion-icon size="normal" name="notifications"></ion-icon>
+        </div>
+        <ion-label class="title">Thông báo</ion-label>
+      </ion-buttons> -->
+      <ion-buttons class="setting" routerLink="/statistic">
+        <div class="img-container">
+          <ion-icon name="stats-chart"></ion-icon>
+        </div>
+        <ion-label class="title">Thống kê</ion-label>
+      </ion-buttons>
+      <ion-buttons class="setting" routerLink="/paymentmethods">
+        <div class="img-container">
+          <ion-icon name="wallet"></ion-icon>
+        </div>
+        <ion-label class="title">Phương thức thanh toán</ion-label>
+      </ion-buttons>
+      <ion-buttons class="setting" routerLink="/account-setting/orders-history">
+        <div class="img-container">
+          <ion-icon name="time"></ion-icon>
+        </div>
+        <ion-label class="title">Lịch sử đặt hàng</ion-label>
+      </ion-buttons>
+      <ion-buttons class="setting" (click)="openModalGoogleMap()">
+        <div class="img-container">
+          <ion-icon name="map"></ion-icon>
+        </div>
+        <ion-label class="title">Bản đồ</ion-label>
+      </ion-buttons>
+      <ion-buttons class="setting" routerLink="/account-setting/setting">
+        <div class="img-container">
+          <ion-icon name="settings"></ion-icon>
+        </div>
+        <ion-label class="title">Cài đặt</ion-label>
+      </ion-buttons>
+      <ion-buttons class="setting" routerLink="/account-setting/introduce">
+        <div class="img-container">
+          <ion-icon name="alert"></ion-icon>
+        </div>
+        <ion-label class="title">Giới thiệu</ion-label>
+      </ion-buttons>
+      <ion-buttons routerLink="/account-setting/support" class="setting">
+        <div class="img-container">
+          <ion-icon name="help"></ion-icon>
+        </div>
+        <ion-label class="title">Trợ giúp</ion-label>
+      </ion-buttons>
+      <ion-buttons class="setting" (click)="openModalLogOut()">
+        <div class="img-container">
+          <ion-icon name="log-out"></ion-icon>
+        </div>
+        <ion-label class="title">Đăng xuất</ion-label>
+      </ion-buttons>
+    </ion-list>
+  </div>
+</ion-content>

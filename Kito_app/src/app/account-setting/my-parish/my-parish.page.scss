@@ -1,0 +1,101 @@
+ion-content {
+  --padding-top: 80px;
+  position: relative;
+  --overflow: scroll;
+  ion-segment {
+    padding-top: 10px;
+    position: fixed;
+    --background: transparent;
+    background: #fff;
+    z-index: 10;
+    ion-segment-button {
+      font-size: 15px;
+      --color-checked: var(--white-color);
+      --color: #828282;
+      --border-radius: 10px;
+      &::part(indicator-background) {
+        background: #f6c33e;
+      }
+    }
+    .intro {
+      // box-shadow: inset 3px 4px 4px #f4f5f8;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-right: none;
+    }
+    .biography {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      border-left: none;
+      // box-shadow: inset 3px 4px 4px #f4f5f8;
+    }
+  }
+  ion-item-group {
+    display: block;
+    text-align: center;
+    .bg {
+      background-repeat: no-repeat !important;
+      background-size: cover !important;
+      height: 216px !important;
+      margin-bottom: 14px;
+      border-radius: 15px;
+    }
+    ion-label {
+      font-size: 16px;
+      margin-bottom: 5px;
+      color: #002d63;
+      font-weight: 500;
+    }
+    span {
+      text-align: left;
+      color: #828282;
+    }
+  }
+  .segement-news {
+    margin-top: 40px;
+  }
+  .home {
+    padding: 12px 16px;
+    margin-top: 40px;
+
+    .list-item {
+      .item-stories {
+        display: flex;
+        padding: 16px 0;
+        background: #fafafa;
+        margin-bottom: 15px;
+        overflow: scroll;
+        border-radius: 10px;
+        border-bottom: 2px solid #eeeeee;
+        img {
+          object-fit: cover;
+          padding-left: 10px;
+          height: 100px;
+          @media screen and (max-height: 569px) {
+            flex-basis: 33%;
+          }
+        }
+        .stories-info {
+          text-align: left;
+          padding-left: 10px;
+          @media screen and (max-height: 569px) {
+            flex-basis: 67%;
+          }
+          .stories-title {
+            color: #002d63;
+            font-size: 16px;
+            font-weight: 500;
+            @media screen and (max-height: 569px) {
+              font-size: 14px !important;
+            }
+          }
+          .stories-content {
+            margin: 0;
+            color: #525252;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <div class="item" (click)="goToDiocese()">
+      <div class="title">Thông tin {{ title }}</div>
+      <div class="img-box main-box-shadow">
+        <img class="cover-img" [src]="archdiocese.thumb_image.url">
+      </div>
+    </div>
+    <div class="item" (click)="goToParishes()">
+      <div class="title">Thông tin các giáo xứ</div>
+      <div class="img-box main-box-shadow">
+        <img class="cover-img" [src]="archdiocese.thumb_image.url">
+      </div>
+    </div>
+    <ng-container *ngFor="let item of list">
+      <app-main-slide *ngIf="item.items.length" [data]="item"></app-main-slide>
+    </ng-container>
+  </ion-list>
+</ion-content>

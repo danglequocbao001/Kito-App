@@ -1,0 +1,6 @@
+<div class="header ion-page ion-no-border"
+  [style.background]="headerCustom.background ? headerCustom.background : '#fff'" [style.color]="headerCustom.color ? headerCustom.color : '#424242'">
+  <ion-label class="three-dots-2">{{ headerCustom.title }}</ion-label>
+  <ion-icon name="home" class="active-effect" style="color: #E7E7E7;" (click)="gotoMain()"></ion-icon>
+  <ion-back-button defaultHref=“main” icon="chevron-back-outline" text="" class="back-btn"></ion-back-button>
+</div>

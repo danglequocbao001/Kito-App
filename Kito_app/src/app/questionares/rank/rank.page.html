@@ -1,0 +1,44 @@
+<app-header class="header" [headerCustom]="headerCustom"></app-header>
+<ion-content *ngIf="ranking.length > 0">
+  <ul>
+    <li *ngFor="let ranker of ranking">
+      <span class="stt-rank" *ngIf="ranker.index != 1 && ranker.index != 2 && ranker.index != 3 && ranker.index < 10">
+        0{{ranker.index}}
+      </span>
+      <span class="stt-rank" *ngIf="ranker.index != 1 && ranker.index != 2 && ranker.index != 3 && ranker.index >= 10">
+        {{ranker.index}}
+      </span>
+      <img class="rank-img" src="../../../assets/img/questionares/1st.svg" *ngIf="ranker.index==1"/>
+      <img class="rank-img" src="../../../assets/img/questionares/2nd.svg" *ngIf="ranker.index==2"/>
+      <img class="rank-img" src="../../../assets/img/questionares/3rd.svg" *ngIf="ranker.index==3"/>
+      <div class="rank-info">
+        <ion-avatar class="avatar">
+          <img src="{{ ranker.thumb_image.url }}" alt="">
+        </ion-avatar>
+        <ion-label class="name three-dots-3">{{ ranker.full_name }}</ion-label>
+        <div class="rank-point">
+          <ion-icon name="trophy"></ion-icon>
+          <ion-label>{{ ranker.score }}</ion-label>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="background-gif">
+    <div class="img-star1">
+      <img src="assets/img/questionares/bubble.gif" alt="" srcset="" />
+    </div>
+    <div class="img-star2">
+      <img src="assets/img/questionares/star2.gif" alt="" srcset="" />
+    </div>
+    <div class="img-star5">
+      <img src="assets/img/questionares/star2.gif" alt="" srcset="" />
+    </div>
+    <div class="img-star3">
+      <img src="assets/img/questionares/bubble.gif" alt="" srcset="" />
+    </div>
+    <div class="img-star4">
+      <img src="assets/img/questionares/bubble.gif" alt="" srcset="" />
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,34 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content *ngIf="questions.length > 0">
+  <!-- <center>
+    <h3 class="title-ques">{{ title }}</h3>
+  </center> -->
+  <div class="choose-cover-topic" *ngIf="title == 'CHỌN CHỦ ĐỀ' ">
+    <ion-avatar class="choose-topic active-effect" *ngFor="let question of questions" (click)="goToQuestion(question)">
+      <img class="choose-topic-img" src="{{ question.thumb_image.url }}"/>
+      <p class="choose-topic-text">{{ question.name }}</p>
+    </ion-avatar>
+  </div>
+
+  <div class="choose-cover-level" *ngIf="title == 'CHỌN CẤP ĐỘ' ">
+    <div class="choose-level active-effect" *ngFor="let question of questions" (click)="goToQuestion(question)">
+      <img class="choose-level-img" src="{{ question.thumb_image.url }}" />
+      <p class="choose-level-text"> {{ question.name }} </p>
+    </div>
+  </div>
+
+  <div class="background-gif">
+    <div class="img-star2">
+      <img src="assets/img/questionares/star2.gif" alt="" srcset="" />
+    </div>
+    <div class="img-star4">
+      <img src="assets/img/questionares/star2.gif" alt="" srcset="" />
+    </div>
+    <div class="img-star3">
+      <img src="assets/img/questionares/star2.gif" alt="" srcset="" />
+    </div>
+  </div>
+</ion-content>

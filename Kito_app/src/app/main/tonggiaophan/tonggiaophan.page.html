@@ -1,0 +1,15 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <app-search-bar-nav (output)="search($event)"></app-search-bar-nav>
+
+  <ion-list *ngIf="dioceses.length > 0">
+    <app-main-item [data]="holySee"></app-main-item>
+    <app-main-item *ngFor="let item of dioceses" [data]="item"></app-main-item>
+  </ion-list>
+  <ion-list *ngIf="!dioceses.length && notFound" class="not-found">
+    Không tìm thấy 
+  </ion-list>
+</ion-content>

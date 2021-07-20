@@ -1,0 +1,52 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content>
+<ion-item-group class="calendar ">
+  <ion-item-group class="title">
+    <ion-icon name="chevron-back-outline" class="ion-left"(click)="prevMonth()"></ion-icon>
+    <ion-text class="month-year d-flex">
+      Tháng {{nameMonth}} . {{currentYear}}
+    </ion-text>
+    <ion-icon name="chevron-forward-outline" class="ion-right" (click)="nextMonth()" ></ion-icon>
+  </ion-item-group>
+ 
+  <div class="wapper-group-day">
+      <ion-item-group class="group-date">
+        <ion-buttons class="group-date-btn"*ngFor="let item of DATES ">
+          <ion-text class="day" > 
+            {{item}}
+        </ion-text>
+        </ion-buttons>
+      </ion-item-group>
+
+        <div class="group-border">
+        <ion-item-group class="group-date">
+            <ion-buttons class="date-btn" *ngFor="let item of calendarMonth" (click)="presentModal(item)">
+               <ion-text  class="date"> {{item.date | date: 'd'}}</ion-text>
+               <ion-text class="lunar_date"> 
+                 {{item.lunar_date | date: 'd'}}</ion-text>
+            </ion-buttons>
+        </ion-item-group>
+    
+    </div>
+   
+  </div>
+</ion-item-group>
+<ion-item-group class="event ion-padding">
+  <ion-text class="title-event">LỄ TRỌNG TRONG THÁNG</ion-text>
+  <ion-list>
+    <ion-item lines ="none" class="" *ngFor="let item of masses">
+      <ion-text class="mass-date">
+        {{item.date | date: 'dd.MM.yyyy'}}
+      </ion-text>
+      <ion-text>
+        {{item.mass_name}}
+
+      </ion-text>
+    </ion-item>
+  </ion-list>
+</ion-item-group>
+
+</ion-content>

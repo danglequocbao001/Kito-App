@@ -1,0 +1,23 @@
+<app-header  [headerCustom]="headerCustom"></app-header>
+<ion-content>
+ 
+  <ion-item-group class="ion-padding">
+    <ion-buttons>
+      <img src="assets/img/card_payment.svg" alt="">
+      <ion-label class=" title" (click)="openModal()">
+         + Thêm thẻ
+       </ion-label>
+    </ion-buttons>
+    <ion-buttons>
+      <img src="assets/img/momo.png" alt="">
+      <ion-label class=" title" (click)="goMomo()">
+        + Qua momo
+      </ion-label>
+    </ion-buttons>
+    
+  </ion-item-group>
+  <!-- <input id="cardholder-name" type="text">
+<div id="card-element"></div>
+<div id="card-result"></div>
+<button id="card-button">Save Card</button> -->
+</ion-content>

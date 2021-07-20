@@ -1,0 +1,50 @@
+.search-bar-container {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 3px 16px 10px;
+  background: #fff;
+  height: 45px;
+
+  ion-searchbar {
+    --background: #fff;
+    --icon-color: #cacaca;
+    --placeholder-color: #cacaca;
+    --placeholder-opacity: 1;
+    --color: #6c6c6c;
+    border: 1px solid #c8c8c8;
+    border-radius: 5px;
+    height: 32px;
+    padding: 0 5px;
+    animation: opacitySearch 0.5s;
+  }
+}
+
+.voice {
+  color: #c8c8c8;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 25px;
+  top: 0;
+  bottom: 7px;
+  margin: auto;
+  z-index: 99;
+}
+.icon-search {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(-50%, 75%);
+  color: #c8c8c8;
+}
+@keyframes opacitySearch {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,33 @@
+ion-content {
+    --padding-top: calc(80px + 45px);
+    --background: #fff;
+    ion-label {
+      color: #424242;
+      margin: 0 auto;
+      display: block;
+      font-size: 20px;
+      margin: 6px 0 12px;
+    }
+  }
+  .header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #424242;
+    font-size: 24px;
+    font-weight: 500;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    background: #fff;
+  
+    @media screen and (max-width: 320px) {
+      font-size: 18px;
+    }
+  }
+  .my-custom-menu {
+    --width: 500px;
+  }

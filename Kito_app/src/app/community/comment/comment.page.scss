@@ -1,0 +1,44 @@
+.allcomment{
+    width: 90%;
+    margin-left: 5%;
+    .subtext{
+        font-size: 12px;
+        font-weight: 500;
+        color: #8b8b8b;
+    }
+    .comment{
+        display: flex;
+        flex-direction: row;
+        padding: 10px 0 10px 0;
+        .avatar{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .text{
+            display: flex;
+            flex-direction: column;
+            .username{
+                font-weight: 500;
+                color: #424242;
+            }
+            .content{
+                color: #424242;
+                margin: 0;
+                padding: 0;                     
+            }
+        }
+        .time-and-reply{
+            color: #828282;
+            font-size: 12px;
+            font-weight: lighter;
+            
+            display: flex;
+            flex-direction: row;
+            .time{
+                margin-right: 10px;
+            }
+        }
+    }
+}

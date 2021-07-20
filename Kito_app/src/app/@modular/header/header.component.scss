@@ -1,0 +1,31 @@
+.header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #424242;
+  font-size: 24px;
+  font-weight: 500;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  @media screen and (max-width: 320px) {
+    font-size: 18px;
+  }
+  ion-label {
+    margin: 0 70px;
+    text-align: center;
+  }
+}
+
+ion-icon {
+  position: absolute;
+  right: 16px;
+  color: #c8c8c8;
+}
+
+ion-back-button {
+  font-size: 2.2vh;
+}

@@ -1,0 +1,35 @@
+<ion-content>
+  <div class="background">
+    <!-- <img class="cover-img" src="assets/img/giamphan.jpg"> -->
+  </div>
+
+  <!-- <div class="avatar-box active-effect" (click)="goToAccountSetting()">
+    <ion-avatar class="avatar">
+      <img [src]="avatar" alt="" *ngIf="avatar">
+      <img src="https://i.imgur.com/edwXSJa.png" alt="" *ngIf="!avatar">
+      <ion-spinner *ngIf="!avatar" class="absolute-center" name="lines"></ion-spinner>
+    </ion-avatar>
+    <span class="avatar-name">{{name}}</span>
+  </div> -->
+
+  <div class="body-wrapper">
+    <div class="body">
+      <ion-buttons class="menu">
+        <div class="item-container" [ngClass]="{'item-container--full-width': item.fullWidth}"
+          *ngFor="let item of menu">
+          <div class="item active-effect" (click)="goToDetail(item)">
+            <ion-buttons class="img-container">
+              <img class="img" [src]="item.thumbImage" alt="">
+            </ion-buttons>
+            <span class="name">{{ item.name }}</span>
+          </div>
+        </div>
+      </ion-buttons>
+
+      <div class="news active-effect">
+        <!-- <span class="news__title">Tin tức Vatican</span> -->
+        <app-main-slide [data]="vaticanList"></app-main-slide>
+      </div>
+    </div>
+  </div>
+</ion-content>

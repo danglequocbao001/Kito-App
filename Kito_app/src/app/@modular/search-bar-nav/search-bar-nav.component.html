@@ -1,0 +1,7 @@
+<div class="search-bar-container">
+  <ion-icon (click)="showSearch()" *ngIf="hiddenSearchBar" class="icon-search" name="search"></ion-icon>
+  <ion-icon name="mic" *ngIf="!hiddenSearchBar" class="voice" alt="" (click)="startVoice()"></ion-icon>
+  <ion-searchbar *ngIf="!hiddenSearchBar" #search mode="ios" placeholder="Tìm kiếm..." [(ngModel)]="input"
+    (ionBlur)="BlurSearch()" (ionChange)="changeInput($event.target.value)">
+  </ion-searchbar>
+</div>

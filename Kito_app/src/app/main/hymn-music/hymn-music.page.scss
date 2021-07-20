@@ -1,0 +1,339 @@
+ion-content {
+  --padding-top: calc(80px + 45px + 52px);
+  --padding-start: 6px;
+  --padding-end: 6px;
+  --overflow: auto;
+
+  ion-segment {
+    padding: 10px 10px;
+    --background: transparent;
+    background: #fff;
+    position: fixed;
+    top: calc(80px + 45px);
+    left: 0;
+    right: 0;
+    z-index: 10;
+    border-radius: 0;
+
+    ion-segment-button {
+      font-size: 15px;
+      --color-checked: var(--white-color);
+      --color: #828282;
+      --border-radius: 10px;
+
+      &::part(indicator-background) {
+        background: #edd81f;
+        box-shadow: 0px 5px 8px rgba(189, 189, 189, 0.25);
+      }
+    }
+  }
+}
+
+ion-footer {
+  padding-top: 7px;
+}
+
+.song-list {
+  height: calc(100% - 16px);
+  overflow: scroll;
+  .song-cover {
+    padding: 10px;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    ion-icon {
+      color: #c8c8c8;
+      width: 25px;
+    }
+
+    .left-box,
+    .right-box {
+      flex-basis: calc(50% - 5px);
+    }
+
+    .left-box {
+      .song-name {
+        flex: 1;
+        word-break: break-word;
+        color: #424242;
+        font-size: 16px;
+      }
+    }
+
+    .right-box {
+      justify-content: flex-end;
+
+      .author {
+        flex: 1;
+        text-align: right;
+        word-break: break-word;
+        color: #828282;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .active-song-cover {
+    background: #fffce0;
+
+    .left-box {
+      .song-name {
+        font-weight: 500;
+      }
+    }
+
+    .right-box {
+      .author {
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.liked {
+  color: #f23131 !important;
+}
+
+.footer-inner {
+  padding: 10px 10px 15px;
+
+  .footer-left {
+    width: calc(100% - 154px);
+
+    .avatar {
+      width: 60px;
+      height: 60px;
+      margin-right: 10px;
+      animation: spin 15s linear infinite;
+    }
+
+    .active-tract-info {
+      width: calc(100% - 70px);
+
+      .active-track-name {
+        color: #424242;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .active-track-author {
+        color: #828282;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .footer-right {
+    margin-left: 10px;
+
+    ion-icon {
+      color: #c8c8c8;
+      font-size: 32px;
+      padding: 8px;
+    }
+  }
+}
+
+.range {
+  height: 0;
+  --bar-background: #c8c8c8;
+  --bar-background-active: #f6c33e;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  flex-direction: column;
+  background-color: #fff;
+  transform: translateY(100%);
+  transition: 0.3s;
+
+  .modal-fixed {
+    flex: 1;
+    width: 100%;
+    text-align: center;
+
+    .modal-header {
+      position: relative;
+      height: 80px;
+
+      .back-btn-custom {
+        font-size: 40px;
+        border: 1px solid;
+      }
+    }
+
+    .name {
+      color: #424242;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .author {
+      color: #828282;
+      font-size: 16px;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      margin: 20px auto;
+      animation: spin 15s linear infinite;
+
+      @media screen and (max-height: 568px) {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+
+  .modal-content {
+    height: 100vh;
+    width: 100%;
+    overflow-y: scroll;
+
+    .lyrics {
+      font-size: 20px;
+      line-height: 27px;
+      color: #828282;
+      padding: 0 16px 16px;
+      text-align: center;
+    }
+  }
+
+  .modal-footer {
+    width: 100%;
+    padding: 10px;
+
+    ion-icon {
+      color: #c8c8c8;
+      font-size: 32px;
+      padding: 8px;
+    }
+
+    .btns {
+      justify-content: space-between;
+
+      .btns-center {
+        ion-icon {
+          margin: 0 5px;
+        }
+      }
+
+      .repeating-box {
+        position: relative;
+
+        .repeating-one {
+          position: absolute;
+          top: 5px;
+          right: 2px;
+          background: rgba(246, 195, 62, 0.8);
+          height: 15px;
+          width: 15px;
+          border-radius: 100%;
+          justify-content: center;
+          color: #fff;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+.has-modal {
+  transform: translateY(0);
+}
+
+.active-btn {
+  color: #f6c33e !important;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.duration-box {
+  color: #828282;
+  min-width: 75px;
+  justify-content: flex-end;
+}
+.filler-icon {
+  width: 15px;
+  position: fixed;
+  top: 80px;
+  right: 0;
+  z-index: 10;
+  transform: translate(-75%, 100%);
+}
+:host ::ng-deep .search-music {
+  .search-bar-container {
+    .icon-search {
+      margin-right: 25px !important;
+    }
+  }
+  ion-searchbar {
+    width: 90%;
+  }
+  .voice {
+    right: 55px;
+  }
+}
+
+//
+.list-songs {
+  padding: 5px 20px;
+  .song-flex {
+    justify-content: space-between;
+  }
+  .name-music {
+    margin-right: 15px;
+    .icon-music {
+      color: #c8c8c8;
+      width: 25px;
+    }
+    p {
+      flex: 1;
+      word-break: break-word;
+      color: #424242;
+      font-size: 16px;
+    }
+  }
+  .item-artist {
+    .icon-heart {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+    }
+    p {
+      text-align: end;
+      flex: 1;
+      text-align: right;
+      word-break: break-word;
+      color: #828282;
+      font-size: 14px;
+    }
+  }
+}
+
+.active-song-css {
+  .name-music {
+    .item-title {
+      font-weight: 600;
+    }
+    .icon-music {
+      color: #edd81f;
+    }
+  }
+  .item-artist {
+    p {
+      font-weight: 600;
+    }
+  }
+}

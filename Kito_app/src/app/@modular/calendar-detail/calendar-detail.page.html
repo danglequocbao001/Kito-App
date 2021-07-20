@@ -1,0 +1,27 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content>
+      <ion-item-group class="group-main">
+      <ion-text>
+      THÁNG {{data.created_at |date: 'M'}} NĂM  {{data.created_at |date: 'yyyy'}}
+        </ion-text>
+            <ion-item-group class="main">
+                <div class="date"
+                >
+                <span class="date-number">{{data.created_at |date: 'dd'}}</span>
+                <span class="date-name">{{data.mass_name}}</span>
+              </div>
+            </ion-item-group>
+            <ion-item-group class="date-info">
+                <ion-label class="day">{{dayName}}</ion-label>
+                <ion-label class="day-month">{{data.created_at |date: 'dd'}} THÁNG {{data.created_at |date: 'M'}}</ion-label>
+            </ion-item-group>
+            <ion-item-group class="note">
+              <h6>LỜI CHÚA</h6>
+              <ion-label class="title"></ion-label>
+              <h6>{{data.wishing}}</h6>
+            </ion-item-group>
+      </ion-item-group>
+</ion-content>

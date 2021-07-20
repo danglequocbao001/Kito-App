@@ -1,0 +1,9 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <app-main-slide *ngFor="let item of list" [data]="item"></app-main-slide>
+  </ion-list>
+</ion-content>

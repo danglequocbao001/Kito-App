@@ -1,0 +1,50 @@
+ion-content {
+    // --overflow: hidden;
+    // object-fit: cover;
+    --background: #777777;
+    
+}
+ion-content {
+    --overflow: hidden;
+    object-fit: cover;
+    img {
+        width: 100%;
+        max-height: 600px;
+        margin-bottom: -4px;
+    }
+    @media screen and (max-height: 823px){
+        img {
+            max-height: 616px;
+        }
+    }
+    @media screen and (max-height: 812px){
+        img {
+            max-height: 600px;
+        }
+    }
+    @media screen and (max-height: 737px){
+        img {
+            max-height: 564px;
+        }
+    }
+    @media screen and (max-height: 732px){
+        img {
+            max-height: 558px;
+        }
+    }
+    @media screen and (max-height: 668px){
+        img {
+            max-height: 508px;
+        }
+    }
+    @media screen and (max-height: 641px){
+        img {
+            max-height: 486px;
+        }
+    }
+    @media screen and (max-height: 569px){
+        img {
+            max-height: 435px;
+        }
+    }
+}
